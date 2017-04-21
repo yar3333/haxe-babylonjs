@@ -42,8 +42,8 @@ extern class Bone extends Node
 	function setRotation(rotation:Vector3, ?space:Space, ?mesh:AbstractMesh) : Void;
 	function setRotationQuaternion(quat:Quaternion, ?space:Space, ?mesh:AbstractMesh) : Void;
 	function setRotationMatrix(rotMat:Matrix, ?space:Space, ?mesh:AbstractMesh) : Void;
-	private function _rotateWithMatrix(rmat, ?space, mesh?);
-	private function _getNegativeRotationToRef(rotMatInv, ?space, mesh?);
+	private function _rotateWithMatrix(rmat, ?space, ?mesh);
+	private function _getNegativeRotationToRef(rotMatInv, ?space, ?mesh);
 	function getScale() : Vector3;
 	function getScaleToRef(result:Vector3) : Void;
 	function getPosition(?space:Space, ?mesh:AbstractMesh) : Vector3;

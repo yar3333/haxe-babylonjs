@@ -90,7 +90,7 @@ extern class PhysicsImpostor
 	 * register a function that will be executed when this impostor collides against a different body.
 	 */
 	function registerOnPhysicsCollide(collideAgainst:haxe.extern.EitherType<PhysicsImpostor, Array<PhysicsImpostor>>, func:PhysicsImpostor->PhysicsImpostor->Void) : Void;
-	function unregisterOnPhysicsCollide(collideAgainst:haxe.extern.EitherType<PhysicsImpostor, Array<PhysicsImpostor>>, func: (collider:PhysicsImpostor, collidedAgainst:haxe.extern.EitherType<PhysicsImpostor, Array<PhysicsImpostor>>) => void) : Void;
+	function unregisterOnPhysicsCollide(collideAgainst:haxe.extern.EitherType<PhysicsImpostor, Array<PhysicsImpostor>>, func:PhysicsImpostor->haxe.extern.EitherType<PhysicsImpostor, Array<PhysicsImpostor>>->Void) : Void;
 	private var _tmpPositionWithDelta : Dynamic/*UNKNOW_TYPE*/;
 	private var _tmpRotationWithDelta : Dynamic/*UNKNOW_TYPE*/;
 	/**

@@ -2,9 +2,8 @@ build: raw-hx-modules
 	haxelib run refactor extract --module-name-is-package raw-hx-modules *.hx library extract_classes.rules
 	haxelib run refactor fixPackage library
 	haxelib run refactor reindent library *.hx 4 4 4 4 -- -4
-	#haxelib run refactor process library *.hx postprocess.rules
+	haxelib run refactor process library *.hx postprocess.rules
 	#haxelib run refactor process -es -ec library *.hx beauty.rules
-	#mv library/js/threejs library/js/three
 	#haxelib run refactor override library
 	#cp -r manual/* library
 

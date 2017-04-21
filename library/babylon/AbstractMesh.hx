@@ -1,5 +1,7 @@
 package babylon;
 
+import js.html.*;
+
 extern class AbstractMesh extends Node implements IDisposable implements ICullable
 {
 	private static var _BILLBOARDMODE_NONE : Dynamic/*UNKNOW_TYPE*/;
@@ -70,7 +72,7 @@ extern class AbstractMesh extends Node implements IDisposable implements ICullab
 	 * @type {BABYLON.ActionManager}
 	*/
 	var actionManager : ActionManager;
-	var physicsImpostor : BABYLON.PhysicsImpostor;
+	var physicsImpostor : PhysicsImpostor;
 	var onPhysicsCollide : AbstractMesh->Dynamic->Void;
 	private var _checkCollisions : Dynamic/*UNKNOW_TYPE*/;
 	var ellipsoid : Vector3;

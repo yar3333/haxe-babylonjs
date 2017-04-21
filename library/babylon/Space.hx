@@ -1,7 +1,7 @@
 package babylon;
 
-extern enum Space
+extern abstract Space(Int) from Int to Int
 {
-	LOCAL = 0;
-	WORLD = 1;
+	var LOCAL = 0;
+	var WORLD = 1;
 }
