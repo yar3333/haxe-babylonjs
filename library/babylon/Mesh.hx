@@ -354,7 +354,7 @@ extern class Mesh extends AbstractMesh implements IGetSetVerticesData
 	function unregisterAfterRender(func:AbstractMesh->Void) : Void;
 	function _getInstancesRenderList(subMeshId:Float) : _InstancesBatch;
 	function _renderWithInstances(subMesh:SubMesh, fillMode:Float, batch:_InstancesBatch, effect:Effect, engine:Engine) : Void;
-	function _processRendering(subMesh:SubMesh, effect:Effect, fillMode:Float, batch:_InstancesBatch, hardwareInstancedRendering:Bool, onBeforeDraw: (isInstance:Bool, world:Matrix, ?effectiveMaterial:Material) => void, ?effectiveMaterial:Material) : Void;
+	function _processRendering(subMesh:SubMesh, effect:Effect, fillMode:Float, batch:_InstancesBatch, hardwareInstancedRendering:Bool, onBeforeDraw: Bool->Matrix->Material->Void, ?effectiveMaterial:Material) : Void;
 	/**
 	 * Triggers the draw call for the mesh.
 	 * Usually, you don't need to call this method by your own because the mesh rendering is handled by the scene rendering manager.
@@ -485,14 +485,14 @@ extern class Mesh extends AbstractMesh implements IGetSetVerticesData
 	 * @param type the type of simplification to run.
 	 * @param successCallback optional success callback to be called after the simplification finished processing all settings.
 	 */
-	function simplify(settings:Array<ISimplificationSettings>, ?parallelProcessing:Bool, ?simplificationType:SimplificationType, successCallback?: (?mesh:Mesh, ?submeshIndex:Float) => void) : Void;
+	function simplify(settings:Array<ISimplificationSettings>, ?parallelProcessing:Bool, ?simplificationType:SimplificationType, ?successCallback:Mesh->Float->Void) : Void;
 	/**
 	 * Optimization of the mesh's indices, in case a mesh has duplicated vertices.
 	 * The function will only reorder the indices and will not remove unused vertices to avoid problems with submeshes.
 	 * This should be used together with the simplification to avoid disappearing triangles.
 	 * @param successCallback an optional success callback to be called after the optimization finished.
 	 */
-	function optimizeIndices(successCallback?: (?mesh:Mesh) => void) : Void;
+	function optimizeIndices(successCallback:Mesh->Void) : Void;
 	/**
 	 * Returns a new Mesh object what is a deep copy of the passed mesh.
 	 * The parameter `parsedMesh` is the mesh to be copied.
@@ -749,10 +749,7 @@ extern class Mesh extends AbstractMesh implements IGetSetVerticesData
 	 * Detail here : http://doc.babylonjs.com/tutorials/02._Discover_Basic_Elements#side-orientation
 	 * The mesh can be set to updatable with the boolean parameter `updatable` (default false) if its internal geometry is supposed to change once created.
 	 */
-	static function CreateTube(name:String, path:Array<Vector3>, radius:Float, tessellation:Float, radiusFunction:
-	{
-		(i:Float, distance:Float) : Float;
-	}, cap:Float, scene:Scene, ?updatable:Bool, ?sideOrientation:Float, ?instance:Mesh) : Mesh;
+	static function CreateTube(name:String, path:Array<Vector3>, radius:Float, tessellation:Float, radiusFunction:Float->Float->Float, cap:Float, scene:Scene, ?updatable:Bool, ?sideOrientation:Float, ?instance:Mesh) : Mesh;
 	/**
 	 * Creates a polyhedron mesh.
 	 * Please consider using the same method from the MeshBuilder class instead.
@@ -771,16 +768,16 @@ extern class Mesh extends AbstractMesh implements IGetSetVerticesData
 	 */
 	static function CreatePolyhedron(name:String, options:
 	{
-		@:optional type : Float,
-		@:optional size : Float,
-		@:optional sizeX : Float,
-		@:optional sizeY : Float,
-		@:optional sizeZ : Float,
-		@:optional custom : Dynamic,
-		@:optional faceUV : Array<Vector4>,
-		@:optional faceColors : Array<Color4>,
-		@:optional updatable : Bool,
-		@:optional sideOrientation : Float
+		@:optional var type : Float;
+		@:optional var size : Float;
+		@:optional var sizeX : Float;
+		@:optional var sizeY : Float;
+		@:optional var sizeZ : Float;
+		@:optional var custom : Dynamic;
+		@:optional var faceUV : Array<Vector4>;
+		@:optional var faceColors : Array<Color4>;
+		@:optional var updatable : Bool;
+		@:optional var sideOrientation : Float;
 	}, scene:Scene) : Mesh;
 	/**
 	 * Creates a sphere based upon an icosahedron with 20 triangular faces which can be subdivided.
@@ -795,11 +792,11 @@ extern class Mesh extends AbstractMesh implements IGetSetVerticesData
 	 */
 	static function CreateIcoSphere(name:String, options:
 	{
-		@:optional radius : Float,
-		@:optional flat : Bool,
-		@:optional subdivisions : Float,
-		@:optional sideOrientation : Float,
-		@:optional updatable : Bool
+		@:optional var radius : Float;
+		@:optional var flat : Bool;
+		@:optional var subdivisions : Float;
+		@:optional var sideOrientation : Float;
+		@:optional var updatable : Bool;
 	}, scene:Scene) : Mesh;
 	/**
 	 * Creates a decal mesh.

@@ -25,7 +25,7 @@ extern class Ray
 	function intersectsMesh(mesh:AbstractMesh, ?fastCheck:Bool) : PickingInfo;
 	function show(scene:Scene, color:Color3) : Void;
 	function hide() : Void;
-	private function _render();
+	private function _render() : Void;
 	private static var smallnum : Dynamic/*UNKNOW_TYPE*/;
 	private static var rayl : Dynamic/*UNKNOW_TYPE*/;
 	/**

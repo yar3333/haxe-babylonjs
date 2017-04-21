@@ -1,5 +1,7 @@
 package babylon;
 
+import js.html.*;
+
 extern class Vector2
 {
 	var x : Float;
