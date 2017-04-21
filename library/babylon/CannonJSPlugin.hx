@@ -1,0 +1,50 @@
+package babylon;
+
+extern class CannonJSPlugin implements IPhysicsEnginePlugin
+{
+	private var _useDeltaForWorldStep : Dynamic/*UNKNOW_TYPE*/;
+	var world : Dynamic;
+	var name : String;
+	private var _physicsMaterials : Dynamic/*UNKNOW_TYPE*/;
+	private var _fixedTimeStep : Dynamic/*UNKNOW_TYPE*/;
+	private var _currentCollisionGroup : Dynamic/*UNKNOW_TYPE*/;
+	function new(?_useDeltaForWorldStep:Bool, ?iterations:Float) : Void;
+	function setGravity(gravity:Vector3) : Void;
+	function setTimeStep(timeStep:Float) : Void;
+	function executeStep(delta:Float, impostors:Array<PhysicsImpostor>) : Void;
+	function applyImpulse(impostor:PhysicsImpostor, force:Vector3, contactPoint:Vector3) : Void;
+	function applyForce(impostor:PhysicsImpostor, force:Vector3, contactPoint:Vector3) : Void;
+	function generatePhysicsBody(impostor:PhysicsImpostor) : Void;
+	private function _processChildMeshes(mainImpostor);
+	function removePhysicsBody(impostor:PhysicsImpostor) : Void;
+	function generateJoint(impostorJoint:PhysicsImpostorJoint) : Void;
+	function removeJoint(impostorJoint:PhysicsImpostorJoint) : Void;
+	private function _addMaterial(name, friction, restitution);
+	private function _checkWithEpsilon(value);
+	private function _createShape(impostor);
+	private function _createHeightmap(object, ?pointDepth);
+	private var _minus90X : Dynamic/*UNKNOW_TYPE*/;
+	private var _plus90X : Dynamic/*UNKNOW_TYPE*/;
+	private var _tmpPosition : Dynamic/*UNKNOW_TYPE*/;
+	private var _tmpQuaternion : Dynamic/*UNKNOW_TYPE*/;
+	private var _tmpDeltaPosition : Dynamic/*UNKNOW_TYPE*/;
+	private var _tmpDeltaRotation : Dynamic/*UNKNOW_TYPE*/;
+	private var _tmpUnityRotation : Dynamic/*UNKNOW_TYPE*/;
+	private function _updatePhysicsBodyTransformation(impostor);
+	function setTransformationFromPhysicsBody(impostor:PhysicsImpostor) : Void;
+	function setPhysicsBodyTransformation(impostor:PhysicsImpostor, newPosition:Vector3, newRotation:Quaternion) : Void;
+	function isSupported() : Bool;
+	function setLinearVelocity(impostor:PhysicsImpostor, velocity:Vector3) : Void;
+	function setAngularVelocity(impostor:PhysicsImpostor, velocity:Vector3) : Void;
+	function getLinearVelocity(impostor:PhysicsImpostor) : Vector3;
+	function getAngularVelocity(impostor:PhysicsImpostor) : Vector3;
+	function setBodyMass(impostor:PhysicsImpostor, mass:Float) : Void;
+	function sleepBody(impostor:PhysicsImpostor) : Void;
+	function wakeUpBody(impostor:PhysicsImpostor) : Void;
+	function updateDistanceJoint(joint:PhysicsJoint, maxDistance:Float, ?minDistance:Float) : Void;
+	private function enableMotor(joint, ?motorIndex);
+	private function disableMotor(joint, ?motorIndex);
+	function setMotor(joint:IMotorEnabledJoint, ?speed:Float, ?maxForce:Float, ?motorIndex:Float) : Void;
+	function setLimit(joint:IMotorEnabledJoint, upperLimit:Float, ?lowerLimit:Float) : Void;
+	function dispose() : Void;
+}
