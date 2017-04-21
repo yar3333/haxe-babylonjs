@@ -1,4 +1,4 @@
-package babylon;
+package babylon/geometry/primitives;
 
 	extern class Disc extends _Primitive
 	{

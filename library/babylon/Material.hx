@@ -22,7 +22,7 @@ extern class Material
 	var sideOrientation : Float;
 	var onCompiled : Effect->Void;
 	var onError : Effect->String->Void;
-	getRenderTargetTextures: Void->SmartArray<RenderTargetTexture>;
+	var getRenderTargetTextures: Void->SmartArray<RenderTargetTexture>;
 	var doNotSerialize : Bool;
 	/**
 	* An event triggered when the material is disposed.
