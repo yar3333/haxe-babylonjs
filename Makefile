@@ -1,7 +1,5 @@
 build: raw-hx-modules
-	haxelib run refactor extractFromFile raw-hx-modules/BABYLON.hx library/babylon extract_classes.rules
-	haxelib run refactor extractFromFile raw-hx-modules/Earcut.hx  library/earcut  extract_classes.rules
-	haxelib run refactor extractFromFile raw-hx-modules/SIMD.hx    library/simd    extract_classes.rules
+	haxelib run refactor extract --module-name-is-package raw-hx-modules *.hx library extract_classes.rules
 	haxelib run refactor fixPackage library
 	haxelib run refactor reindent library *.hx 4 4 4 4 -- -4
 	#haxelib run refactor process library *.hx postprocess.rules
@@ -11,11 +9,8 @@ build: raw-hx-modules
 	#cp -r manual/* library
 
 raw-hx-modules: raw-hx
-	haxelib run refactor extract \
-							--append \
-							--save-not-extracted $@/ROOT.hx \
-							raw-hx *.hx $@ \
-							extract_modules.rules
+	haxelib run refactor extract --append --save-not-extracted $@/ROOT.hx raw-hx *.hx $@ extract_modules.rules
+	haxelib run refactor extractFromFile --append --save-not-extracted $@/BABYLON.hx $@/BABYLON.hx $@/babylon extract_sub_modules.rules
 
 raw-hx: native-ts/**
 	haxelib run refactor convert -es native-ts *.ts $@ %[.]ts$$%.hx% ts_to_haxe.rules
