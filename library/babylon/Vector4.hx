@@ -1,0 +1,57 @@
+package babylon;
+
+extern class Vector4
+{
+	var x : Float;
+	var y : Float;
+	var z : Float;
+	var w : Float;
+	function new(x:Float, y:Float, z:Float, w:Float) : Void;
+	function toString() : String;
+	function getClassName() : String;
+	function getHashCode() : Float;
+	function asArray() : Array<Float>;
+	function toArray(array:Array<Float>, ?index:Float) : Vector4;
+	function addInPlace(otherVector:Vector4) : Vector4;
+	function add(otherVector:Vector4) : Vector4;
+	function addToRef(otherVector:Vector4, result:Vector4) : Vector4;
+	function subtractInPlace(otherVector:Vector4) : Vector4;
+	function subtract(otherVector:Vector4) : Vector4;
+	function subtractToRef(otherVector:Vector4, result:Vector4) : Vector4;
+	function subtractFromFloats(x:Float, y:Float, z:Float, w:Float) : Vector4;
+	function subtractFromFloatsToRef(x:Float, y:Float, z:Float, w:Float, result:Vector4) : Vector4;
+	function negate() : Vector4;
+	function scaleInPlace(scale:Float) : Vector4;
+	function scale(scale:Float) : Vector4;
+	function scaleToRef(scale:Float, result:Vector4) : Void;
+	function equals(otherVector:Vector4) : Bool;
+	function equalsWithEpsilon(otherVector:Vector4, ?epsilon:Float) : Bool;
+	function equalsToFloats(x:Float, y:Float, z:Float, w:Float) : Bool;
+	function multiplyInPlace(otherVector:Vector4) : Vector4;
+	function multiply(otherVector:Vector4) : Vector4;
+	function multiplyToRef(otherVector:Vector4, result:Vector4) : Vector4;
+	function multiplyByFloats(x:Float, y:Float, z:Float, w:Float) : Vector4;
+	function divide(otherVector:Vector4) : Vector4;
+	function divideToRef(otherVector:Vector4, result:Vector4) : Vector4;
+	function MinimizeInPlace(other:Vector4) : Vector4;
+	function MaximizeInPlace(other:Vector4) : Vector4;
+	function length() : Float;
+	function lengthSquared() : Float;
+	function normalize() : Vector4;
+	function toVector3() : Vector3;
+	function clone() : Vector4;
+	function copyFrom(source:Vector4) : Vector4;
+	function copyFromFloats(x:Float, y:Float, z:Float, w:Float) : Vector4;
+	static function FromArray(array:Array<Float>, ?offset:Float) : Vector4;
+	static function FromArrayToRef(array:Array<Float>, offset:Float, result:Vector4) : Void;
+	static function FromFloatArrayToRef(array:Float32Array, offset:Float, result:Vector4) : Void;
+	static function FromFloatsToRef(x:Float, y:Float, z:Float, w:Float, result:Vector4) : Void;
+	static function Zero() : Vector4;
+	static function Normalize(vector:Vector4) : Vector4;
+	static function NormalizeToRef(vector:Vector4, result:Vector4) : Void;
+	static function Minimize(left:Vector4, right:Vector4) : Vector4;
+	static function Maximize(left:Vector4, right:Vector4) : Vector4;
+	static function Distance(value1:Vector4, value2:Vector4) : Float;
+	static function DistanceSquared(value1:Vector4, value2:Vector4) : Float;
+	static function Center(value1:Vector4, value2:Vector4) : Vector4;
+}

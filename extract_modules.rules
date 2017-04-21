@@ -4,3 +4,6 @@ SLCOMMENT = \/\/[^\n]*?
 COMMENTS = [ \t]*(?:MLCOMMENT|SLCOMMENT)(?:[ \t]*\n[ \t]*(?:MLCOMMENT|SLCOMMENT))*
 
 /(?:COMMENTS\n)?^[ \t]*declare[ \t]+(?:module|namespace)[ \t]+(ID)[ \t\n]*{/$1.hx/m
+/(?:COMMENTS\n)?^[ \t]*declare[ \t]+(?:module|namespace)[ \t]+(ID)[.](ID)[ \t\n]*{/$v1\/$2.hx/m
+/(?:COMMENTS\n)?^[ \t]*declare[ \t]+(?:module|namespace)[ \t]+(ID)[.](ID)[.](ID)[ \t\n]*{/$v1\/$v2\/$3.hx/m
+/(?:COMMENTS\n)?^[ \t]*declare[ \t]+(?:module|namespace)[ \t]+(ID)[.](ID)[.](ID)[.](ID)[ \t\n]*{/$v1\/$v2\/$v3\/$4.hx/m

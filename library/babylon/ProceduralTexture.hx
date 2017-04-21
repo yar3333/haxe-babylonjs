@@ -1,0 +1,50 @@
+package babylon;
+
+extern class ProceduralTexture extends Texture
+{
+	var isCube : Bool;
+	private var _size : Dynamic/*UNKNOW_TYPE*/;
+	var _generateMipMaps : Bool;
+	var isEnabled : Bool;
+	private var _doNotChangeAspectRatio : Dynamic/*UNKNOW_TYPE*/;
+	private var _currentRefreshId : Dynamic/*UNKNOW_TYPE*/;
+	private var _refreshRate : Dynamic/*UNKNOW_TYPE*/;
+	var onGenerated : Void->Void;
+	private var _vertexBuffers : Dynamic/*UNKNOW_TYPE*/;
+	private var _indexBuffer : Dynamic/*UNKNOW_TYPE*/;
+	private var _effect : Dynamic/*UNKNOW_TYPE*/;
+	private var _uniforms : Dynamic/*UNKNOW_TYPE*/;
+	private var _samplers : Dynamic/*UNKNOW_TYPE*/;
+	private var _fragment : Dynamic/*UNKNOW_TYPE*/;
+	var _textures : Array<Texture>;
+	private var _floats : Dynamic/*UNKNOW_TYPE*/;
+	private var _floatsArrays : Dynamic/*UNKNOW_TYPE*/;
+	private var _colors3 : Dynamic/*UNKNOW_TYPE*/;
+	private var _colors4 : Dynamic/*UNKNOW_TYPE*/;
+	private var _vectors2 : Dynamic/*UNKNOW_TYPE*/;
+	private var _vectors3 : Dynamic/*UNKNOW_TYPE*/;
+	private var _matrices : Dynamic/*UNKNOW_TYPE*/;
+	private var _fallbackTexture : Dynamic/*UNKNOW_TYPE*/;
+	private var _fallbackTextureUsed : Dynamic/*UNKNOW_TYPE*/;
+	function new(name:String, size:Dynamic, fragment:Dynamic, scene:Scene, ?fallbackTexture:Texture, ?generateMipMaps:Bool, ?isCube:Bool) : Void;
+	function reset() : Void;
+	function isReady() : Bool;
+	function resetRefreshCounter() : Void;
+	function setFragment(fragment:Dynamic) : Void;
+	var refreshRate : Float;
+	function _shouldRender() : Bool;
+	function getRenderSize() : Float;
+	function resize(size:Dynamic, generateMipMaps:Dynamic) : Void;
+	private function _checkUniform(uniformName);
+	function setTexture(name:String, texture:Texture) : ProceduralTexture;
+	function setFloat(name:String, value:Float) : ProceduralTexture;
+	function setFloats(name:String, value:Array<Float>) : ProceduralTexture;
+	function setColor3(name:String, value:Color3) : ProceduralTexture;
+	function setColor4(name:String, value:Color4) : ProceduralTexture;
+	function setVector2(name:String, value:Vector2) : ProceduralTexture;
+	function setVector3(name:String, value:Vector3) : ProceduralTexture;
+	function setMatrix(name:String, value:Matrix) : ProceduralTexture;
+	function render(?useCameraPostProcess:Bool) : Void;
+	function clone() : ProceduralTexture;
+	function dispose() : Void;
+}
