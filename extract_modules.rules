@@ -1,0 +1,6 @@
+ID = [_a-zA-Z][_a-zA-Z0-9]*
+MLCOMMENT = \/[*].*?[*]\/
+SLCOMMENT = \/\/[^\n]*?
+COMMENTS = [ \t]*(?:MLCOMMENT|SLCOMMENT)(?:[ \t]*\n[ \t]*(?:MLCOMMENT|SLCOMMENT))*
+
+/(?:COMMENTS\n)?^[ \t]*declare[ \t]+(?:module|namespace)[ \t]+(ID)[ \t\n]*{/$1.hx/m
