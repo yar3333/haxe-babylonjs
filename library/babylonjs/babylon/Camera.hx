@@ -150,7 +150,8 @@ extern class Camera extends Node
 	/**
 	 * Releases resources associated with this node.
 	 */
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 	function getLeftTarget() : Null<Vector3>;
 	function getRightTarget() : Null<Vector3>;
 	function setCameraRigMode(mode:Float, rigParams:Dynamic) : Void;

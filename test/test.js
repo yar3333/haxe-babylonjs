@@ -9,25 +9,26 @@ function $extend(from, fields) {
 var Main = function() { };
 Main.__name__ = true;
 Main.main = function() {
-	var scene = new THREE.Scene();
-	var camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight,0.1,1000);
-	var renderer = new THREE.WebGLRenderer();
-	renderer.setSize(window.innerWidth,window.innerHeight,true);
-	window.document.body.appendChild(renderer.domElement);
-	var geometry = new THREE.BoxGeometry(1,1,1);
-	var material = new THREE.MeshBasicMaterial({ color : 65280});
-	var cube = new THREE.Mesh(geometry,material);
-	scene.add(cube);
-	camera.position.z = 5;
-	var render = null;
-	render = function(_) {
-		window.requestAnimationFrame(render);
-		cube.rotation.x += 0.1;
-		cube.rotation.y += 0.1;
-		renderer.render(scene,camera);
-	};
-	var render1 = render;
-	render1(0);
+	var canvas = window.document.getElementById("renderCanvas");
+	var engine = new BABYLON.Engine(canvas,true);
+	var scene = Main.createScene(canvas,engine);
+	engine.runRenderLoop(function() {
+		scene.render();
+	});
+	window.addEventListener("resize",function() {
+		engine.resize();
+	});
+};
+Main.createScene = function(canvas,engine) {
+	var scene = new BABYLON.Scene(engine);
+	var camera = new BABYLON.FreeCamera("camera",new BABYLON.Vector3(0,5,-10),scene);
+	camera.setTarget(BABYLON.Vector3.Zero());
+	camera.attachControl(canvas,false);
+	var light = new BABYLON.HemisphericLight("light1",new BABYLON.Vector3(0,1,0),scene);
+	var sphere = BABYLON.MeshBuilder.CreateSphere("sphere",{ segments : 16, diameter : 2},scene);
+	sphere.position.y = 1;
+	var ground = BABYLON.MeshBuilder.CreateGround("ground1",{ height : 6, width : 6, subdivisions : 2},scene);
+	return scene;
 };
 Math.__name__ = true;
 var Std = function() { };
@@ -35,6 +36,14 @@ Std.__name__ = true;
 Std.string = function(s) {
 	return js_Boot.__string_rec(s,"");
 };
+var babylonjs_TTT = function() { };
+babylonjs_TTT.__name__ = true;
+babylonjs_TTT.f = function() {
+	var a = { };
+	return a[0];
+};
+var babylonjs_WebGLObject = function() { };
+babylonjs_WebGLObject.__name__ = true;
 var haxe_io_FPHelper = function() { };
 haxe_io_FPHelper.__name__ = true;
 haxe_io_FPHelper.i32ToFloat = function(i) {
@@ -473,17 +482,6 @@ js_html_compat_Uint8Array._subarray = function(start,end) {
 	a.byteOffset = start;
 	return a;
 };
-var js_three__$ArrayLike_ArrayLike_$Impl_$ = {};
-js_three__$ArrayLike_ArrayLike_$Impl_$.__name__ = true;
-js_three__$ArrayLike_ArrayLike_$Impl_$.get = function(this1,key) {
-	return this1[key];
-};
-js_three__$ArrayLike_ArrayLike_$Impl_$.arrayWrite = function(this1,k,v) {
-	this1[k] = v;
-	return v;
-};
-var js_three_ObjectType = function() { };
-js_three_ObjectType.__name__ = true;
 String.prototype.__class__ = String;
 String.__name__ = true;
 Array.__name__ = true;
@@ -504,20 +502,5 @@ var Uint8Array = $global.Uint8Array || js_html_compat_Uint8Array._new;
 js_Boot.__toStr = ({ }).toString;
 js_html_compat_Float32Array.BYTES_PER_ELEMENT = 4;
 js_html_compat_Uint8Array.BYTES_PER_ELEMENT = 1;
-js_three_ObjectType.Scene = "Scene";
-js_three_ObjectType.PerspectiveCamera = "PerspectiveCamera";
-js_three_ObjectType.OrthographicCamera = "OrthographicCamera";
-js_three_ObjectType.AmbientLight = "AmbientLight";
-js_three_ObjectType.DirectionalLight = "DirectionalLight";
-js_three_ObjectType.PointLight = "PointLight";
-js_three_ObjectType.SpotLight = "SpotLight";
-js_three_ObjectType.HemisphereLight = "HemisphereLight";
-js_three_ObjectType.Mesh = "Mesh";
-js_three_ObjectType.LOD = "LOD";
-js_three_ObjectType.Line = "Line";
-js_three_ObjectType.PointCloud = "PointCloud";
-js_three_ObjectType.Points = "Points";
-js_three_ObjectType.Sprite = "Sprite";
-js_three_ObjectType.Group = "Group";
 Main.main();
 })(typeof window != "undefined" ? window : typeof global != "undefined" ? global : typeof self != "undefined" ? self : this);

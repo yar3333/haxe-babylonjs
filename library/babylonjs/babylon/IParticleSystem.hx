@@ -119,7 +119,8 @@ extern interface IParticleSystem
 	/**
 	 * Dispose the particle system and frees its associated resources.
 	 */
-	function dispose(?disposeTexture:Bool) : Void;
+	@:overload(function(?disposeTexture:Bool):Void{})
+	function dispose() : Void;
 	/**
 	 * Clones the particle system.
 	 * @returns the cloned particle system

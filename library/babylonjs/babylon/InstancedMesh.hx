@@ -140,5 +140,6 @@ extern class InstancedMesh extends AbstractMesh
 	 * Disposes the InstancedMesh.
 	 * Returns nothing.
 	 */
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 }

@@ -711,7 +711,8 @@ extern class AbstractMesh extends TransformNode
 	/**
 	 * Releases resources associated with this abstract mesh.
 	 */
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 	/**
 	 * Adds the passed mesh as a child to the current mesh
 	 * @returns the current mesh

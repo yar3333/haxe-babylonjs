@@ -408,7 +408,8 @@ extern class Mesh extends AbstractMesh
 	/**
 	 * Releases resources associated with this mesh.
 	 */
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 	/**
 	 * Modifies the mesh geometry according to a displacement map.
 	 * A displacement map is a colored image. Each pixel color value (actually a gradient computed from red, green, blue values) will give the displacement to apply to each mesh vertex.

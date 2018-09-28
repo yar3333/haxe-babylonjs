@@ -288,5 +288,6 @@ extern class TransformNode extends Node
 	/**
 	 * Releases resources associated with this transform node.
 	 */
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 }
