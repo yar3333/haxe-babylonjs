@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.Tags")
 extern class Tags
 {
 	static function EnableFor(obj:Dynamic) : Void;

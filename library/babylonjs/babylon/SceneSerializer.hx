@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.SceneSerializer")
 extern class SceneSerializer
 {
 	static function ClearCache() : Void;

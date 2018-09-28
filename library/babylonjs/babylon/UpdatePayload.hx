@@ -1,11 +1,8 @@
-package babylon;
+package babylonjs.babylon;
 
 extern interface UpdatePayload
 {
-	var updatedMeshes :
-	{
-		[n: Float]: SerializedMesh;
-	};
+	var updatedMeshes : Dynamic<SerializedMesh>;
 	var updatedGeometries : Dynamic<SerializedGeometry>;
 	var removedMeshes : Array<Float>;
 	var removedGeometries : Array<String>;

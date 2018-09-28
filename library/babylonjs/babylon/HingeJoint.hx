@@ -1,18 +1,26 @@
-package babylon;
+package babylonjs.babylon;
 
+/**
+ * This class represents a single hinge physics joint
+ */
+@:native("BABYLON.HingeJoint")
 extern class HingeJoint extends MotorEnabledJoint
 {
-	function new(jointData:PhysicsJointData) : Void;
+	/**
+	 * This class represents a single hinge physics joint
+	 */
+	@:overload(function(jointData:PhysicsJointData): Void{})
+	function new(type:Float, jointData:PhysicsJointData) : Void;
 	/**
 	 * Set the motor values.
 	 * Attention, this function is plugin specific. Engines won't react 100% the same.
-	 * @param {number} force the force to apply
-	 * @param {number} maxForce max force for this motor.
 	 */
-	function setMotor(?force:Float, ?maxForce:Float) : Void;
+	@:overload(function(?force:Float,?maxForce:Float): Void{})
+	override function setMotor(?force:Float, ?maxForce:Float, ?motorIndex:Float) : Void;
 	/**
 	 * Set the motor's limits.
 	 * Attention, this function is plugin specific. Engines won't react 100% the same.
 	 */
-	function setLimit(upperLimit:Float, ?lowerLimit:Float) : Void;
+	@:overload(function(upperLimit:Float,?lowerLimit:Float): Void{})
+	override function setLimit(upperLimit:Float, ?lowerLimit:Float, ?motorIndex:Float) : Void;
 }

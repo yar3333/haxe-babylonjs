@@ -1,11 +1,35 @@
-package babylon;
+package babylonjs.babylon;
 
+/**
+ * Defines a state condition as an extension of Condition
+ */
+@:native("BABYLON.StateCondition")
 extern class StateCondition extends Condition
 {
 	var value : String;
-	var _actionManager : ActionManager;
-	private var _target : Dynamic/*UNKNOW_TYPE*/;
-	function new(actionManager:ActionManager, target:Dynamic, value:String) : Void;
-	function isValid() : Bool;
-	function serialize() : Dynamic;
+	/**
+	 * Internal only - manager for action
+	 * @hidden
+	 */
+	//var _actionManager : ActionManager;
+	/**
+	 * Internal only
+	 * @hidden
+	 */
+	private var _target : Dynamic;
+
+	/**
+	 * Defines a state condition as an extension of Condition
+	 */
+	@:overload(function(actionManager:ActionManager, target:Dynamic, value:String): Void{})
+	function new(actionManager:ActionManager) : Void;
+	/**
+	 * @returns the validity of the state
+	 */
+	override function isValid() : Bool;
+	/**
+	 * Serialize the StateCondition into a JSON compatible object
+	 * @returns serialization object
+	 */
+	override function serialize() : Dynamic;
 }

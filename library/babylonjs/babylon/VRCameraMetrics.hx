@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.VRCameraMetrics")
 extern class VRCameraMetrics
 {
 	var hResolution : Float;
@@ -15,11 +16,12 @@ extern class VRCameraMetrics
 	var postProcessScaleFactor : Float;
 	var lensCenterOffset : Float;
 	var compensateDistortion : Bool;
-	var aspectRatio : Float;
-	var aspectRatioFov : Float;
-	var leftHMatrix : Matrix;
-	var rightHMatrix : Matrix;
-	var leftPreViewMatrix : Matrix;
-	var rightPreViewMatrix : Matrix;
+	var aspectRatio(default, null) : Float;
+	var aspectRatioFov(default, null) : Float;
+	var leftHMatrix(default, null) : Matrix;
+	var rightHMatrix(default, null) : Matrix;
+	var leftPreViewMatrix(default, null) : Matrix;
+	var rightPreViewMatrix(default, null) : Matrix;
+
 	static function GetDefault() : VRCameraMetrics;
 }

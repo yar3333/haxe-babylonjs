@@ -1,0 +1,3 @@
+package babylonjs;
+
+interface WebGLObject {}

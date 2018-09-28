@@ -1,16 +1,23 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class FreeCameraGamepadInput implements ICameraInput<FreeCamera>
+@:native("BABYLON.FreeCameraGamepadInput")
+extern class FreeCameraGamepadInput
+	implements ICameraInput<FreeCamera>
 {
 	var camera : FreeCamera;
-	var gamepad : Gamepad;
-	private var _gamepads : Dynamic/*UNKNOW_TYPE*/;
+	var gamepad : Null<Gamepad>;
+	private var _onGamepadConnectedObserver : Dynamic;
+	private var _onGamepadDisconnectedObserver : Dynamic;
 	var gamepadAngularSensibility : Float;
 	var gamepadMoveSensibility : Float;
-	function attachControl(element:HtmlElement, ?noPreventDefault:Bool) : Void;
-	function detachControl(element:HtmlElement) : Void;
+	private var _cameraTransform : Dynamic;
+	private var _deltaTransform : Dynamic;
+	private var _vector3 : Dynamic;
+	private var _vector2 : Dynamic;
+
+	function attachControl(element:js.html.Element, ?noPreventDefault:Bool) : Void;
+	function detachControl(element:Null<js.html.Element>) : Void;
 	function checkInputs() : Void;
-	private function _onNewGameConnected(gamepad);
-	function getTypeName() : String;
+	function getClassName() : String;
 	function getSimpleName() : String;
 }

@@ -1,4 +1,4 @@
-package babylon;
+package babylonjs.babylon;
 
 extern interface PhysicsImpostorParameters
 {
@@ -6,4 +6,6 @@ extern interface PhysicsImpostorParameters
 	@:optional var friction : Float;
 	@:optional var restitution : Float;
 	@:optional var nativeOptions : Dynamic;
+	@:optional var ignoreParent : Bool;
+	@:optional var disableBidirectionalTransformation : Bool;
 }

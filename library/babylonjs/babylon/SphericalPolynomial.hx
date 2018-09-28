@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.SphericalPolynomial")
 extern class SphericalPolynomial
 {
 	var x : Vector3;
@@ -11,6 +12,8 @@ extern class SphericalPolynomial
 	var xy : Vector3;
 	var yz : Vector3;
 	var zx : Vector3;
+
 	function addAmbient(color:Color3) : Void;
 	static function getSphericalPolynomialFromHarmonics(harmonics:SphericalHarmonics) : SphericalPolynomial;
+	function scale(scale:Float) : Void;
 }

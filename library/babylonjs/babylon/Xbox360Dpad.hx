@@ -1,9 +1,25 @@
-package babylon;
+package babylonjs.babylon;
 
-extern enum Xbox360Dpad
+/**
+ * Defines values for XBox360 DPad  
+ */
+@:native("BABYLON.Xbox360Dpad")
+@:enum abstract Xbox360Dpad(Dynamic)
 {
-	Up = 0;
-	Down = 1;
-	Left = 2;
-	Right = 3;
+	/**
+	 * Up 
+	 */
+	var Up = 0;
+	/**
+	 * Down 
+	 */
+	var Down = 1;
+	/**
+	 * Left 
+	 */
+	var Left = 2;
+	/**
+	 * Right 
+	 */
+	var Right = 3;
 }

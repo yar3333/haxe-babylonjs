@@ -1,8 +1,21 @@
-package babylon;
+package babylonjs.babylon;
 
-extern enum JoystickAxis
+/**
+ * Defines the potential axis of a Joystick
+ */
+@:native("BABYLON.JoystickAxis")
+@:enum abstract JoystickAxis(Dynamic)
 {
-	X = 0;
-	Y = 1;
-	Z = 2;
+	/**
+	 * X axis 
+	 */
+	var X = 0;
+	/**
+	 * Y axis 
+	 */
+	var Y = 1;
+	/**
+	 * Z axis 
+	 */
+	var Z = 2;
 }

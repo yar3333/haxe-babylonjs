@@ -1,20 +1,22 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class FreeCameraTouchInput implements ICameraInput<FreeCamera>
+@:native("BABYLON.FreeCameraTouchInput")
+extern class FreeCameraTouchInput
+	implements ICameraInput<FreeCamera>
 {
 	var camera : FreeCamera;
-	private var _offsetX : Dynamic/*UNKNOW_TYPE*/;
-	private var _offsetY : Dynamic/*UNKNOW_TYPE*/;
-	private var _pointerCount : Dynamic/*UNKNOW_TYPE*/;
-	private var _pointerPressed : Dynamic/*UNKNOW_TYPE*/;
-	private var _pointerInput : Dynamic/*UNKNOW_TYPE*/;
-	private var _observer : Dynamic/*UNKNOW_TYPE*/;
-	private var _onLostFocus : Dynamic/*UNKNOW_TYPE*/;
+	private var _offsetX : Dynamic;
+	private var _offsetY : Dynamic;
+	private var _pointerPressed : Dynamic;
+	private var _pointerInput : Dynamic;
+	private var _observer : Dynamic;
+	private var _onLostFocus : Dynamic;
 	var touchAngularSensibility : Float;
 	var touchMoveSensibility : Float;
-	function attachControl(element:HtmlElement, ?noPreventDefault:Bool) : Void;
-	function detachControl(element:HtmlElement) : Void;
+
+	function attachControl(element:js.html.Element, ?noPreventDefault:Bool) : Void;
+	function detachControl(element:Null<js.html.Element>) : Void;
 	function checkInputs() : Void;
-	function getTypeName() : String;
+	function getClassName() : String;
 	function getSimpleName() : String;
 }

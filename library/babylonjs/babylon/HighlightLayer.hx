@@ -1,39 +1,34 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class HighlightLayer
+/**
+ * The highlight layer Helps adding a glow effect around a mesh.
+ * 
+ * Once instantiated in a scene, simply use the pushMesh or removeMesh method to add or remove
+ * glowy meshes to your scene.
+ * 
+ * !!! THIS REQUIRES AN ACTIVE STENCIL BUFFER ON THE CANVAS !!!
+ */
+@:native("BABYLON.HighlightLayer")
+extern class HighlightLayer extends EffectLayer
 {
+	//var name : String;
+	/**
+	 * Effect Name of the highlight layer.
+	 */
+	static var EffectName(default, null) : String;
 	/**
 	 * The neutral color used during the preparation of the glow effect.
 	 * This is black by default as the blend operation is a blend operation.
 	 */
-	static var neutralColor : Color4;
+	static var NeutralColor : Color4;
 	/**
 	 * Stencil value used for glowing meshes.
 	 */
-	static var glowingMeshStencilReference : Float;
+	static var GlowingMeshStencilReference : Float;
 	/**
 	 * Stencil value used for the other meshes in the scene.
 	 */
-	static var normalMeshStencilReference : Float;
-	private var _scene : Dynamic/*UNKNOW_TYPE*/;
-	private var _engine : Dynamic/*UNKNOW_TYPE*/;
-	private var _options : Dynamic/*UNKNOW_TYPE*/;
-	private var _vertexBuffers : Dynamic/*UNKNOW_TYPE*/;
-	private var _indexBuffer : Dynamic/*UNKNOW_TYPE*/;
-	private var _downSamplePostprocess : Dynamic/*UNKNOW_TYPE*/;
-	private var _horizontalBlurPostprocess : Dynamic/*UNKNOW_TYPE*/;
-	private var _verticalBlurPostprocess : Dynamic/*UNKNOW_TYPE*/;
-	private var _cachedDefines : Dynamic/*UNKNOW_TYPE*/;
-	private var _glowMapGenerationEffect : Dynamic/*UNKNOW_TYPE*/;
-	private var _glowMapMergeEffect : Dynamic/*UNKNOW_TYPE*/;
-	private var _blurTexture : Dynamic/*UNKNOW_TYPE*/;
-	private var _mainTexture : Dynamic/*UNKNOW_TYPE*/;
-	private var _mainTextureDesiredSize : Dynamic/*UNKNOW_TYPE*/;
-	private var _meshes : Dynamic/*UNKNOW_TYPE*/;
-	private var _maxSize : Dynamic/*UNKNOW_TYPE*/;
-	private var _shouldRender : Dynamic/*UNKNOW_TYPE*/;
-	private var _instanceGlowingMeshStencilReference : Dynamic/*UNKNOW_TYPE*/;
-	private var _excludedMeshes : Dynamic/*UNKNOW_TYPE*/;
+	static var NormalMeshStencilReference : Float;
 	/**
 	 * Specifies whether or not the inner glow is ACTIVE in the layer.
 	 */
@@ -43,126 +38,129 @@ extern class HighlightLayer
 	 */
 	var outerGlow : Bool;
 	/**
-	 * Specifies wether the highlight layer is enabled or not.
-	 */
-	var isEnabled : Bool;
-	/**
 	 * Gets the horizontal size of the blur.
-	 */
-	/**
 	 * Specifies the horizontal size of the blur.
 	 */
 	var blurHorizontalSize : Float;
 	/**
 	 * Gets the vertical size of the blur.
-	 */
-	/**
 	 * Specifies the vertical size of the blur.
 	 */
 	var blurVerticalSize : Float;
 	/**
-	 * Gets the camera attached to the layer.
-	 */
-	var camera : Camera;
-	/**
-	 * An event triggered when the highlight layer has been disposed.
-	 * @type {BABYLON.Observable}
-	 */
-	var onDisposeObservable : Observable<HighlightLayer>;
-	/**
-	 * An event triggered when the highlight layer is about rendering the main texture with the glowy parts.
-	 * @type {BABYLON.Observable}
-	 */
-	var onBeforeRenderMainTextureObservable : Observable<HighlightLayer>;
-	/**
 	 * An event triggered when the highlight layer is being blurred.
-	 * @type {BABYLON.Observable}
 	 */
 	var onBeforeBlurObservable : Observable<HighlightLayer>;
 	/**
 	 * An event triggered when the highlight layer has been blurred.
-	 * @type {BABYLON.Observable}
 	 */
 	var onAfterBlurObservable : Observable<HighlightLayer>;
+	private var _instanceGlowingMeshStencilReference : Dynamic;
+	private var _options : Dynamic;
+	private var _downSamplePostprocess : Dynamic;
+	private var _horizontalBlurPostprocess : Dynamic;
+	private var _verticalBlurPostprocess : Dynamic;
+	private var _blurTexture : Dynamic;
+	private var _meshes : Dynamic;
+	private var _excludedMeshes : Dynamic;
+
 	/**
-	 * An event triggered when the glowing blurred texture is being merged in the scene.
-	 * @type {BABYLON.Observable}
+	 * The highlight layer Helps adding a glow effect around a mesh.
+	 * 
+	 * Once instantiated in a scene, simply use the pushMesh or removeMesh method to add or remove
+	 * glowy meshes to your scene.
+	 * 
+	 * !!! THIS REQUIRES AN ACTIVE STENCIL BUFFER ON THE CANVAS !!!
 	 */
-	var onBeforeComposeObservable : Observable<HighlightLayer>;
+	@:overload(function(name:String, scene:Scene,?options:Partial<IHighlightLayerOptions>): Void{})
+	function new(name:String, scene:Scene) : Void;
 	/**
-	 * An event triggered when the glowing blurred texture has been merged in the scene.
-	 * @type {BABYLON.Observable}
+	 * Get the effect name of the layer.
+	 * @return The effect name
 	 */
-	var onAfterComposeObservable : Observable<HighlightLayer>;
+	override function getEffectName() : String;
 	/**
-	 * An event triggered when the highlight layer changes its size.
-	 * @type {BABYLON.Observable}
+	 * Create the merge effect. This is the shader use to blit the information back
+	 * to the main canvas at the end of the scene rendering.
 	 */
-	var onSizeChangedObservable : Observable<HighlightLayer>;
-	/**
-	 * Instantiates a new highlight Layer and references it to the scene..
-	 * @param name The name of the layer
-	 * @param scene The scene to use the layer in
-	 * @param options Sets of none mandatory options to use with the layer (see IHighlightLayerOptions for more information)
-	 */
-	function new(name:String, scene:Scene, ?options:IHighlightLayerOptions) : Void;
+	override function _createMergeEffect() : Effect;
 	/**
 	 * Creates the render target textures and post processes used in the highlight layer.
 	 */
-	private function createTextureAndPostProcesses();
+	override function _createTextureAndPostProcesses() : Void;
+	/**
+	 * Returns wether or nood the layer needs stencil enabled during the mesh rendering.
+	 */
+	override function needStencil() : Bool;
 	/**
 	 * Checks for the readiness of the element composing the layer.
-	 * @param subMesh the mesh to check for
-	 * @param useInstances specify wether or not to use instances to render the mesh
-	 * @param emissiveTexture the associated emissive texture used to generate the glow
 	 * @return true if ready otherwise, false
 	 */
-	private function isReady(subMesh, useInstances, emissiveTexture);
+	override function isReady(subMesh:SubMesh, useInstances:Bool) : Bool;
 	/**
-	 * Renders the glowing part of the scene by blending the blurred glowing meshes on top of the rendered scene.
+	 * Implementation specific of rendering the generating effect on the main canvas.
 	 */
-	function render() : Void;
+	override function _internalRender(effect:Effect) : Void;
+	/**
+	 * Returns true if the layer contains information to display, otherwise false.
+	 */
+	override function shouldRender() : Bool;
+	/**
+	 * Returns true if the mesh should render, otherwise false.
+	 * @returns true if it should render otherwise false
+	 */
+	override function _shouldRenderMesh(mesh:Mesh) : Bool;
+	/**
+	 * Sets the required values for both the emissive texture and and the main color.
+	 */
+	override function _setEmissiveTextureAndColor(mesh:Mesh, subMesh:SubMesh, material:Material) : Void;
 	/**
 	 * Add a mesh in the exclusion list to prevent it to impact or being impacted by the highlight layer.
-	 * @param mesh The mesh to exclude from the highlight layer
 	 */
 	function addExcludedMesh(mesh:Mesh) : Void;
 	/**
-	  * Remove a mesh from the exclusion list to let it impact or being impacted by the highlight layer.
-	  * @param mesh The mesh to highlight
-	  */
+	 * Remove a mesh from the exclusion list to let it impact or being impacted by the highlight layer.
+	 */
 	function removeExcludedMesh(mesh:Mesh) : Void;
 	/**
+	 * Determine if a given mesh will be highlighted by the current HighlightLayer
+	 * @returns true if the mesh will be highlighted by the current HighlightLayer
+	 */
+	override function hasMesh(mesh:AbstractMesh) : Bool;
+	/**
 	 * Add a mesh in the highlight layer in order to make it glow with the chosen color.
-	 * @param mesh The mesh to highlight
-	 * @param color The color of the highlight
-	 * @param glowEmissiveOnly Extract the glow from the emissive texture
 	 */
 	function addMesh(mesh:Mesh, color:Color3, ?glowEmissiveOnly:Bool) : Void;
 	/**
 	 * Remove a mesh from the highlight layer in order to make it stop glowing.
-	 * @param mesh The mesh to highlight
 	 */
 	function removeMesh(mesh:Mesh) : Void;
 	/**
-	 * Returns true if the layer contains information to display, otherwise false.
-	 */
-	function shouldRender() : Bool;
-	/**
-	 * Sets the main texture desired size which is the closest power of two
-	 * of the engine canvas size.
-	 */
-	private function setMainTextureSize();
-	/**
 	 * Force the stencil to the normal expected value for none glowing parts
 	 */
-	private function defaultStencilReference(mesh);
+	private function _defaultStencilReference(mesh:Dynamic) : Dynamic;
 	/**
-	 * Dispose only the render target textures and post process.
+	 * Free any resources and references associated to a mesh.
+	 * Internal use
 	 */
-	private function disposeTextureAndPostProcesses();
+	override function _disposeMesh(mesh:Mesh) : Void;
 	/**
 	 * Dispose the highlight layer and free resources.
 	 */
-	function dispose() : Void;
+	override function dispose() : Void;
+	/**
+	 * Gets the class name of the effect layer
+	 * @returns the string with the class name of the effect layer
+	 */
+	override function getClassName() : String;
+	/**
+	 * Serializes this Highlight layer
+	 * @returns a serialized Highlight layer object
+	 */
+	override function serialize() : Dynamic;
+	/**
+	 * Creates a Highlight layer from parsed Highlight layer data
+	 * @returns a parsed Highlight layer
+	 */
+	static function Parse(parsedHightlightLayer:Dynamic, scene:Scene, rootUrl:String) : HighlightLayer;
 }

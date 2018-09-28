@@ -1,12 +1,16 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class CollisionCoordinatorLegacy implements ICollisionCoordinator
+@:native("BABYLON.CollisionCoordinatorLegacy")
+extern class CollisionCoordinatorLegacy
+	implements ICollisionCoordinator
 {
-	private var _scene : Dynamic/*UNKNOW_TYPE*/;
-	private var _scaledPosition : Dynamic/*UNKNOW_TYPE*/;
-	private var _scaledVelocity : Dynamic/*UNKNOW_TYPE*/;
-	private var _finalPosition : Dynamic/*UNKNOW_TYPE*/;
-	function getNewPosition(position:Vector3, velocity:Vector3, collider:Collider, maximumRetry:Float, excludedMesh:AbstractMesh, onNewPosition: (collisionIndex:Float, newPosition:Vector3, ?collidedMesh:AbstractMesh) => void, collisionIndex:Float) : Void;
+	private var _scene : Dynamic;
+	private var _scaledPosition : Dynamic;
+	private var _scaledVelocity : Dynamic;
+	private var _finalPosition : Dynamic;
+
+	@:overload(function(position:Vector3, displacement:Vector3, collider:Collider, maximumRetry:Float, excludedMesh:AbstractMesh, onNewPosition:Float->Vector3->Null<AbstractMesh>->Void, collisionIndex:Float): Void{})
+	function getNewPosition(position:Vector3, displacement:Vector3, collider:Collider, maximumRetry:Float, excludedMesh:Null<AbstractMesh>, onNewPosition:Float->Vector3->Null<AbstractMesh>->Void, collisionIndex:Float) : Void;
 	function init(scene:Scene) : Void;
 	function destroy() : Void;
 	function onMeshAdded(mesh:AbstractMesh) : Void;
@@ -15,5 +19,5 @@ extern class CollisionCoordinatorLegacy implements ICollisionCoordinator
 	function onGeometryAdded(geometry:Geometry) : Void;
 	function onGeometryUpdated(geometry:Geometry) : Void;
 	function onGeometryDeleted(geometry:Geometry) : Void;
-	private function _collideWithWorld(position, velocity, collider, maximumRetry, finalPosition, ?excludedMesh);
+	private function _collideWithWorld(position:Dynamic, velocity:Dynamic, collider:Dynamic, maximumRetry:Dynamic, finalPosition:Dynamic, ?excludedMesh:Dynamic) : Dynamic;
 }

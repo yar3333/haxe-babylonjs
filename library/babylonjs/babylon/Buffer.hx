@@ -1,22 +1,40 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.Buffer")
 extern class Buffer
 {
-	private var _engine : Dynamic/*UNKNOW_TYPE*/;
-	private var _buffer : Dynamic/*UNKNOW_TYPE*/;
-	private var _data : Dynamic/*UNKNOW_TYPE*/;
-	private var _updatable : Dynamic/*UNKNOW_TYPE*/;
-	private var _strideSize : Dynamic/*UNKNOW_TYPE*/;
-	private var _instanced : Dynamic/*UNKNOW_TYPE*/;
-	function new(engine:Dynamic, data:haxe.extern.EitherType<Array<Float>, Float32Array>, updatable:Bool, stride:Float, ?postponeInternalCreation:Bool, ?instanced:Bool) : Void;
-	function createVertexBuffer(kind:String, offset:Float, size:Float, ?stride:Float) : VertexBuffer;
+	private var _engine : Dynamic;
+	private var _buffer : Dynamic;
+	private var _data : Dynamic;
+	private var _updatable : Dynamic;
+	private var _instanced : Dynamic;
+	/**
+	 * Gets the byte stride.
+	 */
+	var byteStride(default, null) : Float;
+
+	function new(engine:Dynamic, data:DataArray, updatable:Bool, ?stride:Float, ?postponeInternalCreation:Bool, ?instanced:Bool, ?useBytes:Bool) : Void;
+	/**
+	 * Create a new {BABYLON.VertexBuffer} based on the current buffer
+	 * @returns the new vertex buffer
+	 */
+	function createVertexBuffer(kind:String, offset:Float, size:Float, ?stride:Float, ?instanced:Bool, ?useBytes:Bool) : VertexBuffer;
 	function isUpdatable() : Bool;
-	function getData() : haxe.extern.EitherType<Array<Float>, Float32Array>;
-	function getBuffer() : WebGLBuffer;
+	function getData() : Null<DataArray>;
+	function getBuffer() : Null<WebGLBuffer>;
+	/**
+	 * Gets the stride in float32 units (i.e. byte stride / 4).
+	 * May not be an integer if the byte stride is not divisible by 4.
+	 * DEPRECATED. Use byteStride instead.
+	 * @returns the stride in float32 units
+	 */
 	function getStrideSize() : Float;
-	function getIsInstanced() : Bool;
-	function create(?data:haxe.extern.EitherType<Array<Float>, Float32Array>) : Void;
-	function update(data:haxe.extern.EitherType<Array<Float>, Float32Array>) : Void;
-	function updateDirectly(data:Float32Array, offset:Float, ?vertexCount:Float) : Void;
+	function create(?data:Null<DataArray>) : Void;
+	function _rebuild() : Void;
+	function update(data:DataArray) : Void;
+	/**
+	 * Updates the data directly.
+	 */
+	function updateDirectly(data:DataArray, offset:Float, ?vertexCount:Float, ?useBytes:Bool) : Void;
 	function dispose() : Void;
 }

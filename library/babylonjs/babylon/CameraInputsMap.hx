@@ -1,7 +1,5 @@
-package babylon;
+package babylonjs.babylon;
 
-extern interface CameraInputsMap<TCamera:BABYLON.Camera>
+extern interface CameraInputsMap<TCamera:Camera>
 {
-	[name: String]: ICameraInput<TCamera>;
-	[idx: Float]: ICameraInput<TCamera>;
 }

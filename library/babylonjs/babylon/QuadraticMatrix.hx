@@ -1,10 +1,12 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.QuadraticMatrix")
 extern class QuadraticMatrix
 {
 	var data : Array<Float>;
+
 	function new(?data:Array<Float>) : Void;
-	function det(a11:Dynamic, a12:Dynamic, a13:Dynamic, a21:Dynamic, a22:Dynamic, a23:Dynamic, a31:Dynamic, a32:Dynamic, a33:Dynamic) : Float;
+	function det(a11:Float, a12:Float, a13:Float, a21:Float, a22:Float, a23:Float, a31:Float, a32:Float, a33:Float) : Float;
 	function addInPlace(matrix:QuadraticMatrix) : Void;
 	function addArrayInPlace(data:Array<Float>) : Void;
 	function add(matrix:QuadraticMatrix) : QuadraticMatrix;

@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.Polygon")
 extern class Polygon
 {
 	static function Rectangle(xmin:Float, ymin:Float, xmax:Float, ymax:Float) : Array<Vector2>;

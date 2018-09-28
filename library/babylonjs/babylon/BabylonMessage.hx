@@ -1,7 +1,7 @@
-package babylon;
+package babylonjs.babylon;
 
 extern interface BabylonMessage
 {
 	var taskType : WorkerTaskType;
-	payload: haxe.extern.EitherType<haxe.extern.EitherType<InitPayload, CollidePayload >, UpdatePayload>;
+	var payload : haxe.extern.EitherType<InitPayload, haxe.extern.EitherType<CollidePayload, UpdatePayload>>;
 }

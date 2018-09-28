@@ -1,22 +1,29 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.ReflectionProbe")
 extern class ReflectionProbe
 {
 	var name : String;
-	private var _scene : Dynamic/*UNKNOW_TYPE*/;
-	private var _renderTargetTexture : Dynamic/*UNKNOW_TYPE*/;
-	private var _projectionMatrix : Dynamic/*UNKNOW_TYPE*/;
-	private var _viewMatrix : Dynamic/*UNKNOW_TYPE*/;
-	private var _target : Dynamic/*UNKNOW_TYPE*/;
-	private var _add : Dynamic/*UNKNOW_TYPE*/;
-	private var _attachedMesh : Dynamic/*UNKNOW_TYPE*/;
-	var invertYAxis : Bool;
+	private var _scene : Dynamic;
+	private var _renderTargetTexture : Dynamic;
+	private var _projectionMatrix : Dynamic;
+	private var _viewMatrix : Dynamic;
+	private var _target : Dynamic;
+	private var _add : Dynamic;
+	private var _attachedMesh : Dynamic;
+	private var _invertYAxis : Dynamic;
 	var position : Vector3;
-	function new(name:String, size:Float, scene:Scene, ?generateMipMaps:Bool) : Void;
+	var samples : Float;
 	var refreshRate : Float;
+	var cubeTexture(default, null) : RenderTargetTexture;
+	var renderList(default, null) : Null<Array<AbstractMesh>>;
+
+	function new(name:String, size:Float, scene:Scene, ?generateMipMaps:Bool) : Void;
 	function getScene() : Scene;
-	var cubeTexture : RenderTargetTexture;
-	var renderList : Array<AbstractMesh>;
 	function attachToMesh(mesh:AbstractMesh) : Void;
+	/**
+	 * Specifies whether or not the stencil and depth buffer are cleared between two rendering groups.
+	 */
+	function setRenderingAutoClearDepthStencil(renderingGroupId:Float, autoClearDepthStencil:Bool) : Void;
 	function dispose() : Void;
 }

@@ -1,4 +1,4 @@
-package babylon;
+package babylonjs.babylon;
 
 extern interface WorkerReply
 {

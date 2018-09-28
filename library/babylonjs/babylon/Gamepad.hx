@@ -1,22 +1,33 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.Gamepad")
 extern class Gamepad
 {
 	var id : String;
 	var index : Float;
 	var browserGamepad : Dynamic;
-	private var _leftStick : Dynamic/*UNKNOW_TYPE*/;
-	private var _rightStick : Dynamic/*UNKNOW_TYPE*/;
-	private var _leftStickAxisX : Dynamic/*UNKNOW_TYPE*/;
-	private var _leftStickAxisY : Dynamic/*UNKNOW_TYPE*/;
-	private var _rightStickAxisX : Dynamic/*UNKNOW_TYPE*/;
-	private var _rightStickAxisY : Dynamic/*UNKNOW_TYPE*/;
-	private var _onleftstickchanged : Dynamic/*UNKNOW_TYPE*/;
-	private var _onrightstickchanged : Dynamic/*UNKNOW_TYPE*/;
+	var type : Float;
+	private var _leftStick : Dynamic;
+	private var _rightStick : Dynamic;
+	var _isConnected : Bool;
+	private var _leftStickAxisX : Dynamic;
+	private var _leftStickAxisY : Dynamic;
+	private var _rightStickAxisX : Dynamic;
+	private var _rightStickAxisY : Dynamic;
+	private var _onleftstickchanged : Dynamic;
+	private var _onrightstickchanged : Dynamic;
+	static var GAMEPAD : Float;
+	static var GENERIC : Float;
+	static var XBOX : Float;
+	static var POSE_ENABLED : Float;
+	private var _invertLeftStickY : Bool;
+	var isConnected(default, null) : Bool;
+	var leftStick : StickValues;
+	var rightStick : StickValues;
+
 	function new(id:String, index:Float, browserGamepad:Dynamic, ?leftStickX:Float, ?leftStickY:Float, ?rightStickX:Float, ?rightStickY:Float) : Void;
 	function onleftstickchanged(callback:StickValues->Void) : Void;
 	function onrightstickchanged(callback:StickValues->Void) : Void;
-	var leftStick : StickValues;
-	var rightStick : StickValues;
 	function update() : Void;
+	function dispose() : Void;
 }

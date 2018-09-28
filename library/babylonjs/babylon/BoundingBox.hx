@@ -1,18 +1,27 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class BoundingBox implements ICullable
+@:native("BABYLON.BoundingBox")
+extern class BoundingBox
+	implements ICullable
 {
-	var minimum : Vector3;
-	var maximum : Vector3;
 	var vectors : Array<Vector3>;
 	var center : Vector3;
+	var centerWorld : Vector3;
 	var extendSize : Vector3;
+	var extendSizeWorld : Vector3;
 	var directions : Array<Vector3>;
 	var vectorsWorld : Array<Vector3>;
 	var minimumWorld : Vector3;
 	var maximumWorld : Vector3;
-	private var _worldMatrix : Dynamic/*UNKNOW_TYPE*/;
-	function new(minimum:Vector3, maximum:Vector3) : Void;
+	var minimum : Vector3;
+	var maximum : Vector3;
+	private var _worldMatrix : Dynamic;
+
+	function new(min:Vector3, max:Vector3) : Void;
+	/**
+	 * Recreates the entire bounding box from scratch
+	 */
+	function reConstruct(min:Vector3, max:Vector3) : Void;
 	function getWorldMatrix() : Matrix;
 	function setWorldMatrix(matrix:Matrix) : BoundingBox;
 	function _update(world:Matrix) : Void;

@@ -1,8 +1,11 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class PowerEase extends EasingFunction implements IEasingFunction
+@:native("BABYLON.PowerEase")
+extern class PowerEase extends EasingFunction
+	implements IEasingFunction
 {
 	var power : Float;
+
 	function new(?power:Float) : Void;
-	function easeInCore(gradient:Float) : Float;
+	override function easeInCore(gradient:Float) : Float;
 }

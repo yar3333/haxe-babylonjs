@@ -1,19 +1,24 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class FreeCameraKeyboardMoveInput implements ICameraInput<FreeCamera>
+@:native("BABYLON.FreeCameraKeyboardMoveInput")
+extern class FreeCameraKeyboardMoveInput
+	implements ICameraInput<FreeCamera>
 {
 	var camera : FreeCamera;
-	private var _keys : Dynamic/*UNKNOW_TYPE*/;
-	private var _onKeyDown : Dynamic/*UNKNOW_TYPE*/;
-	private var _onKeyUp : Dynamic/*UNKNOW_TYPE*/;
+	private var _keys : Dynamic;
+	private var _onCanvasBlurObserver : Dynamic;
+	private var _onKeyboardObserver : Dynamic;
+	private var _engine : Dynamic;
+	private var _scene : Dynamic;
 	var keysUp : Array<Float>;
 	var keysDown : Array<Float>;
 	var keysLeft : Array<Float>;
 	var keysRight : Array<Float>;
-	function attachControl(element:HtmlElement, ?noPreventDefault:Bool) : Void;
-	function detachControl(element:HtmlElement) : Void;
+
+	function attachControl(element:js.html.Element, ?noPreventDefault:Bool) : Void;
+	function detachControl(element:Null<js.html.Element>) : Void;
 	function checkInputs() : Void;
-	function getTypeName() : String;
-	function _onLostFocus(e:FocusEvent) : Void;
+	function getClassName() : String;
+	function _onLostFocus(e:js.html.FocusEvent) : Void;
 	function getSimpleName() : String;
 }

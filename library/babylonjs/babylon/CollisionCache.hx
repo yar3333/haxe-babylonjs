@@ -1,17 +1,13 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.CollisionCache")
 extern class CollisionCache
 {
-	private var _meshes : Dynamic/*UNKNOW_TYPE*/;
-	private var _geometries : Dynamic/*UNKNOW_TYPE*/;
-	function getMeshes() :
-	{
-		[n: Float]: SerializedMesh;
-	};
-	function getGeometries() :
-	{
-		[s: Float]: SerializedGeometry;
-	};
+	private var _meshes : Dynamic;
+	private var _geometries : Dynamic;
+
+	function getMeshes() : Dynamic<SerializedMesh>;
+	function getGeometries() : Dynamic<SerializedGeometry>;
 	function getMesh(id:Dynamic) : SerializedMesh;
 	function addMesh(mesh:SerializedMesh) : Void;
 	function removeMesh(uniqueId:Float) : Void;

@@ -1,6 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
-extern interface IOctreeContainer<T>
+extern interface IOctreeContainer<T:Dynamic>
 {
-	blocks: Array<OctreeBlock<T>>;
+	var blocks : Array<OctreeBlock<T>>;
 }

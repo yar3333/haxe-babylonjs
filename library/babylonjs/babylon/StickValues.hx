@@ -1,8 +1,10 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.StickValues")
 extern class StickValues
 {
-	var x : Dynamic;
-	var y : Dynamic;
-	function new(x:Dynamic, y:Dynamic) : Void;
+	var x : Float;
+	var y : Float;
+
+	function new(x:Float, y:Float) : Void;
 }

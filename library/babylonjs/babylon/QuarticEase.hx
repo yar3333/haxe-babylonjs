@@ -1,6 +1,8 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class QuarticEase extends EasingFunction implements IEasingFunction
+@:native("BABYLON.QuarticEase")
+extern class QuarticEase extends EasingFunction
+	implements IEasingFunction
 {
-	function easeInCore(gradient:Float) : Float;
+	override function easeInCore(gradient:Float) : Float;
 }

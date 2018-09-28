@@ -1,20 +1,18 @@
-package babylon;
+package babylonjs.babylon;
 
+/**
+ * This is a holder class for the physics joint created by the physics plugin.
+ * It holds a set of functions to control the underlying joint.
+ */
+@:native("BABYLON.PhysicsJoint")
 extern class PhysicsJoint
 {
 	var type : Float;
 	var jointData : PhysicsJointData;
-	private var _physicsJoint : Dynamic/*UNKNOW_TYPE*/;
-	protected var _physicsPlugin : IPhysicsEnginePlugin;
-	function new(type:Float, jointData:PhysicsJointData) : Void;
+	private var _physicsJoint : Dynamic;
+	private var _physicsPlugin : IPhysicsEnginePlugin;
 	var physicsJoint : Dynamic;
 	var physicsPlugin : IPhysicsEnginePlugin;
-	/**
-	 * Execute a function that is physics-plugin specific.
-	 * @param {Function} func the function that will be executed.
-	 *                        It accepts two parameters: the physics world and the physics joint.
-	 */
-	function executeNativeFunction(func:Dynamic->Dynamic->Void) : Void;
 	static var DistanceJoint : Float;
 	static var HingeJoint : Float;
 	static var BallAndSocketJoint : Float;
@@ -26,4 +24,14 @@ extern class PhysicsJoint
 	static var PointToPointJoint : Float;
 	static var SpringJoint : Float;
 	static var LockJoint : Float;
+
+	/**
+	 * This is a holder class for the physics joint created by the physics plugin.
+	 * It holds a set of functions to control the underlying joint.
+	 */
+	function new(type:Float, jointData:PhysicsJointData) : Void;
+	/**
+	 * Execute a function that is physics-plugin specific.
+	 */
+	function executeNativeFunction(func:Dynamic->Dynamic->Void) : Void;
 }

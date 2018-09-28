@@ -1,21 +1,21 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.PostProcessRenderPipelineManager")
 extern class PostProcessRenderPipelineManager
 {
-	private var _renderPipelines : Dynamic/*UNKNOW_TYPE*/;
+	private var _renderPipelines : Dynamic;
+
 	function new() : Void;
 	function addPipeline(renderPipeline:PostProcessRenderPipeline) : Void;
-	function attachCamerasToRenderPipeline(renderPipelineName:String, cameras:Camera, ?unique:Bool) : Dynamic;
-	function attachCamerasToRenderPipeline(renderPipelineName:String, cameras:Array<Camera>, ?unique:Bool) : Dynamic;
-	function detachCamerasFromRenderPipeline(renderPipelineName:String, cameras:Camera) : Dynamic;
-	function detachCamerasFromRenderPipeline(renderPipelineName:String, cameras:Array<Camera>) : Dynamic;
-	function enableEffectInPipeline(renderPipelineName:String, renderEffectName:String, cameras:Camera) : Dynamic;
-	function enableEffectInPipeline(renderPipelineName:String, renderEffectName:String, cameras:Array<Camera>) : Dynamic;
-	function disableEffectInPipeline(renderPipelineName:String, renderEffectName:String, cameras:Camera) : Dynamic;
-	function disableEffectInPipeline(renderPipelineName:String, renderEffectName:String, cameras:Array<Camera>) : Dynamic;
-	function enableDisplayOnlyPassInPipeline(renderPipelineName:String, passName:String, cameras:Camera) : Dynamic;
-	function enableDisplayOnlyPassInPipeline(renderPipelineName:String, passName:String, cameras:Array<Camera>) : Dynamic;
-	function disableDisplayOnlyPassInPipeline(renderPipelineName:String, cameras:Camera) : Dynamic;
-	function disableDisplayOnlyPassInPipeline(renderPipelineName:String, cameras:Array<Camera>) : Dynamic;
+	@:overload(function(renderPipelineName:String, cameras:Array<Camera>, ?unique:Bool):Void{})
+	function attachCamerasToRenderPipeline(renderPipelineName:String, cameras:Camera, ?unique:Bool) : Void;
+	@:overload(function(renderPipelineName:String, cameras:Array<Camera>):Void{})
+	function detachCamerasFromRenderPipeline(renderPipelineName:String, cameras:Camera) : Void;
+	@:overload(function(renderPipelineName:String, renderEffectName:String, cameras:Array<Camera>):Void{})
+	function enableEffectInPipeline(renderPipelineName:String, renderEffectName:String, cameras:Camera) : Void;
+	@:overload(function(renderPipelineName:String, renderEffectName:String, cameras:Array<Camera>):Void{})
+	function disableEffectInPipeline(renderPipelineName:String, renderEffectName:String, cameras:Camera) : Void;
 	function update() : Void;
+	function _rebuild() : Void;
+	function dispose() : Void;
 }

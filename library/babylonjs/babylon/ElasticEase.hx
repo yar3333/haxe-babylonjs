@@ -1,9 +1,12 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class ElasticEase extends EasingFunction implements IEasingFunction
+@:native("BABYLON.ElasticEase")
+extern class ElasticEase extends EasingFunction
+	implements IEasingFunction
 {
 	var oscillations : Float;
 	var springiness : Float;
+
 	function new(?oscillations:Float, ?springiness:Float) : Void;
-	function easeInCore(gradient:Float) : Float;
+	override function easeInCore(gradient:Float) : Float;
 }

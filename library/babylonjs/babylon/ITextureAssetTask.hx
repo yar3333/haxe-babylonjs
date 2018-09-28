@@ -1,8 +1,9 @@
-package babylon;
+package babylonjs.babylon;
 
-extern interface ITextureAssetTask extends IAssetTask
+extern interface ITextureAssetTask<TEX:BaseTexture>
 {
-	var onSuccess : ITextureAssetTask->Void;
-	var onError : ITextureAssetTask->Void;
-	var texture : Texture;
+	/**
+	 * Gets the loaded texture
+	 */
+	var texture : TEX;
 }

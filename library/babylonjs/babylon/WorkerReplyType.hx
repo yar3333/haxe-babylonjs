@@ -1,7 +1,17 @@
-package babylon;
+package babylonjs.babylon;
 
-extern enum WorkerReplyType
+/**
+ * Defines kind of replies returned by worker 
+ */
+@:native("BABYLON.WorkerReplyType")
+@:enum abstract WorkerReplyType(Dynamic)
 {
-	SUCCESS = 0;
-	UNKNOWN_ERROR = 1;
+	/**
+	 * Success 
+	 */
+	var SUCCESS = 0;
+	/**
+	 * Unkown error 
+	 */
+	var UNKNOWN_ERROR = 1;
 }
