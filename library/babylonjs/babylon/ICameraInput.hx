@@ -3,9 +3,10 @@ package babylonjs.babylon;
 extern interface ICameraInput<TCamera:Camera>
 {
 	var camera : Null<TCamera>;
-	var attachControl : js.html.Element->Bool->Void;
-	var detachControl : Null<js.html.Element>->Void;
-	@:optional var checkInputs : Void->Void;
+	
+	function attachControl(element:js.html.Element, ?noPreventDefault:Bool) : Void;
+	function detachControl(element:Null<js.html.Element>) : Void;
+	//@:optional function checkInputs() : Void;
 
 	function getClassName() : String;
 	function getSimpleName() : String;

@@ -25,5 +25,5 @@ extern class PostProcessRenderPipeline
 	function _update() : Void;
 	function _reset() : Void;
 	function _enableMSAAOnFirstPostProcess(sampleCount:Float) : Bool;
-	function dispose() : Void;
+	function dispose(?deep:Bool) : Void;
 }
