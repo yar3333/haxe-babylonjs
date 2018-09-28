@@ -32,8 +32,8 @@ extern class LinesMesh extends Mesh
 	override function _bind(subMesh:SubMesh, effect:Effect, fillMode:Float) : Mesh;
 	@:overload(function(subMesh:SubMesh, fillMode:Float,?instancesCount:Float): LinesMesh{})
 	override function _draw(subMesh:SubMesh, fillMode:Float, ?instancesCount:Float, ?alternate:Bool) : Mesh;
-	@:overload(function(?doNotRecurse:Bool): Void{})
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 	/**
 	 * Returns a new LineMesh object cloned from the current one.
 	 */

@@ -240,7 +240,8 @@ extern class Light extends Node
 	/**
 	 * Releases resources associated with this node.
 	 */
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 	/**
 	 * Returns the light type ID (integer).
 	 * @returns The light Type id as a constant defines in Light.LIGHTTYPEID_x

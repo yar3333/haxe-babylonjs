@@ -1,6 +1,6 @@
 package babylonjs;
 
-interface ArrayLike<T> extends ArrayAccess<T>
+extern interface ArrayLike<T> implements ArrayAccess<T>
 {
 	public var length : Int;
 }

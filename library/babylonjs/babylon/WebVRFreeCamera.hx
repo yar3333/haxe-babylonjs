@@ -99,8 +99,8 @@ extern class WebVRFreeCamera extends FreeCamera
 	/**
 	 * Disposes the camera
 	 */
-	@:overload(function(): Void{})
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 	/**
 	 * Gets a vrController by name.
 	 * @returns the controller matching the name specified or null if not found

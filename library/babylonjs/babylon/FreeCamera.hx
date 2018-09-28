@@ -39,7 +39,7 @@ extern class FreeCamera extends TargetCamera
 	override function _checkInputs() : Void;
 	override function _decideIfNeedsToMove() : Bool;
 	override function _updatePosition() : Void;
-	@:overload(function(): Void{})
-	override function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	override function dispose() : Void;
 	override function getClassName() : String;
 }

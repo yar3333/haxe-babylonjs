@@ -255,7 +255,8 @@ extern class Node
 	/**
 	 * Releases resources associated with this node.
 	 */
-	function dispose(?doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool) : Void;
+	@:overload(function(doNotRecurse:Bool, ?disposeMaterialAndTextures:Bool):Void{})
+	function dispose() : Void;
 	/**
 	 * Parse animation range data from a serialization object and store them into a given node
 	 */

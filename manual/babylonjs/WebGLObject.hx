@@ -1,3 +1,3 @@
 package babylonjs;
 
-interface WebGLObject {}
+extern interface WebGLObject {}
