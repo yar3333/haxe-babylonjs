@@ -6,7 +6,7 @@ extern class SimplificationSettings
 {
 	var quality : Float;
 	var distance : Float;
-	var optimizeMesh : haxe.extern.EitherType<Bool, {}>;
+	var optimizeMesh : Bool;
 
 	function new(quality:Float, distance:Float, ?optimizeMesh:haxe.extern.EitherType<Bool, {}>) : Void;
 }

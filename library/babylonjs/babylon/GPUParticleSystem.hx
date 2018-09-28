@@ -229,8 +229,7 @@ extern class GPUParticleSystem
 	/**
 	 * Disposes the particle system and free the associated resources
 	 */
-	@:overload(function(?disposeTexture:Bool): Void{})
-	function dispose() : Void;
+	function dispose(?disposeTexture:Bool) : Void;
 	/**
 	 * Clones the particle system.
 	 * @returns the cloned particle system

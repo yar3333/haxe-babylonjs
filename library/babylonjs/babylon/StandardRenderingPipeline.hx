@@ -97,7 +97,7 @@ extern class StandardRenderingPipeline extends PostProcessRenderPipeline
 	/**
 	 * Dispose of the pipeline and stop all post processes
 	 */
-	override function dispose() : Void;
+	override function dispose(?deep:Bool) : Void;
 	/**
 	 * Serialize the rendering pipeline (Used when exporting)
 	 * @returns the serialized object
