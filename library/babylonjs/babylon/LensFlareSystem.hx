@@ -1,24 +1,26 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.LensFlareSystem")
 extern class LensFlareSystem
 {
 	var name : String;
 	var lensFlares : Array<LensFlare>;
 	var borderLimit : Float;
 	var viewportBorder : Float;
-	var meshesSelectionPredicate : Mesh->Bool;
+	var meshesSelectionPredicate : AbstractMesh->Bool;
 	var layerMask : Float;
 	var id : String;
-	private var _scene : Dynamic/*UNKNOW_TYPE*/;
-	private var _emitter : Dynamic/*UNKNOW_TYPE*/;
-	private var _vertexBuffers : Dynamic/*UNKNOW_TYPE*/;
-	private var _indexBuffer : Dynamic/*UNKNOW_TYPE*/;
-	private var _effect : Dynamic/*UNKNOW_TYPE*/;
-	private var _positionX : Dynamic/*UNKNOW_TYPE*/;
-	private var _positionY : Dynamic/*UNKNOW_TYPE*/;
-	private var _isEnabled : Dynamic/*UNKNOW_TYPE*/;
-	function new(name:String, emitter:Dynamic, scene:Scene) : Void;
+	private var _scene : Dynamic;
+	private var _emitter : Dynamic;
+	private var _vertexBuffers : Dynamic;
+	private var _indexBuffer : Dynamic;
+	private var _effect : Dynamic;
+	private var _positionX : Dynamic;
+	private var _positionY : Dynamic;
+	private var _isEnabled : Dynamic;
 	var isEnabled : Bool;
+
+	function new(name:String, emitter:Dynamic, scene:Scene) : Void;
 	function getScene() : Scene;
 	function getEmitter() : Dynamic;
 	function setEmitter(newEmitter:Dynamic) : Void;

@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.TargetCamera")
 extern class TargetCamera extends Camera
 {
 	var cameraDirection : Vector3;
@@ -14,37 +15,54 @@ extern class TargetCamera extends Camera
 	var _camMatrix : Matrix;
 	var _cameraTransformMatrix : Matrix;
 	var _cameraRotationMatrix : Matrix;
-	private var _rigCamTransformMatrix : Dynamic/*UNKNOW_TYPE*/;
+	private var _rigCamTransformMatrix : Dynamic;
 	var _referencePoint : Vector3;
-	private var _defaultUpVector : Dynamic/*UNKNOW_TYPE*/;
+	private var _currentUpVector : Dynamic;
 	var _transformedReferencePoint : Vector3;
-	var _lookAtTemp : Matrix;
-	var _tempMatrix : Matrix;
+	private var _globalCurrentTarget : Vector3;
+	private var _globalCurrentUpVector : Vector3;
 	var _reset : Void->Void;
-	function new(name:String, position:Vector3, scene:Scene) : Void;
+	/**
+	 * Store current camera state (fov, position, etc..)
+	 */
+	private var _storedPosition : Dynamic;
+	private var _storedRotation : Dynamic;
+	private var _storedRotationQuaternion : Dynamic;
+
+	@:overload(function(name:String, position:Vector3, scene:Scene,?setActiveOnSceneIfNoneActive:Bool): Void{})
+	function new(name:String, ?scene:Null<Scene>) : Void;
 	function getFrontPosition(distance:Float) : Vector3;
-	function _getLockedTargetPosition() : Vector3;
-	function _initCache() : Void;
-	function _updateCache(?ignoreParentClass:Bool) : Void;
-	function _isSynchronizedViewMatrix() : Bool;
+	function _getLockedTargetPosition() : Null<Vector3>;
+	override function storeState() : Camera;
+	/**
+	 * Restored camera state. You must call storeState() first
+	 */
+	override function _restoreStateValues() : Bool;
+	override function _initCache() : Void;
+	override function _updateCache(?ignoreParentClass:Bool) : Void;
+	override function _isSynchronizedViewMatrix() : Bool;
 	function _computeLocalCameraSpeed() : Float;
 	function setTarget(target:Vector3) : Void;
+	/**
+	 * Return the current target position of the camera. This value is expressed in local space.
+	 */
 	function getTarget() : Vector3;
 	function _decideIfNeedsToMove() : Bool;
 	function _updatePosition() : Void;
-	function _checkInputs() : Void;
-	private function _updateCameraRotationMatrix();
-	function _getViewMatrix() : Matrix;
+	override function _checkInputs() : Void;
+	override function _updateCameraRotationMatrix() : Void;
+	override function _getViewMatrix() : Matrix;
+	function _computeViewMatrix(position:Vector3, target:Vector3, up:Vector3) : Void;
 	/**
 	 * @override
 	 * Override Camera.createRigCamera
 	 */
-	function createRigCamera(name:String, cameraIndex:Float) : Camera;
+	override function createRigCamera(name:String, cameraIndex:Float) : Null<Camera>;
 	/**
 	 * @override
 	 * Override Camera._updateRigCameras
 	 */
-	function _updateRigCameras() : Void;
-	private function _getRigCamPosition(halfSpace, result);
-	function getTypeName() : String;
+	override function _updateRigCameras() : Void;
+	private function _getRigCamPosition(halfSpace:Dynamic, result:Dynamic) : Dynamic;
+	override function getClassName() : String;
 }

@@ -1,16 +1,21 @@
-package babylon;
+package babylonjs.babylon;
 
+/**
+ * This represents a texture coming from an HDR input.
+ * 
+ * The only supported format is currently panorama picture stored in RGBE format.
+ * Example of such files can be found on HDRLib: http://hdrlib.com/
+ */
+@:native("BABYLON.HDRCubeTexture")
 extern class HDRCubeTexture extends BaseTexture
 {
-	private static var _facesMapping : Dynamic/*UNKNOW_TYPE*/;
-	private var _useInGammaSpace : Dynamic/*UNKNOW_TYPE*/;
-	private var _generateHarmonics : Dynamic/*UNKNOW_TYPE*/;
-	private var _noMipmap : Dynamic/*UNKNOW_TYPE*/;
-	private var _extensions : Dynamic/*UNKNOW_TYPE*/;
-	private var _textureMatrix : Dynamic/*UNKNOW_TYPE*/;
-	private var _size : Dynamic/*UNKNOW_TYPE*/;
-	private var _usePMREMGenerator : Dynamic/*UNKNOW_TYPE*/;
-	private var _isBABYLONPreprocessed : Dynamic/*UNKNOW_TYPE*/;
+	private static var _facesMapping : Dynamic;
+	private var _generateHarmonics : Dynamic;
+	private var _noMipmap : Dynamic;
+	private var _textureMatrix : Dynamic;
+	private var _size : Dynamic;
+	private var _onLoad : Dynamic;
+	private var _onError : Dynamic;
 	/**
 	 * The texture URL.
 	 */
@@ -18,63 +23,50 @@ extern class HDRCubeTexture extends BaseTexture
 	/**
 	 * The texture coordinates mode. As this texture is stored in a cube format, please modify carefully.
 	 */
-	var coordinatesMode : Float;
+	//var coordinatesMode : Float;
+	private var _isBlocking : Bool;
 	/**
-	 * The spherical polynomial data extracted from the texture.
+	 * Gets wether or not the texture is blocking during loading.
+	 * Sets wether or not the texture is blocking during loading.
 	 */
-	var sphericalPolynomial : SphericalPolynomial;
+	//var isBlocking : Bool;
+	private var _rotationY : Float;
 	/**
-	 * Specifies wether the texture has been generated through the PMREMGenerator tool.
-	 * This is usefull at run time to apply the good shader.
+	 * Gets texture matrix rotation angle around Y axis radians.
+	 * Sets texture matrix rotation angle around Y axis in radians.
 	 */
-	var isPMREM : Bool;
+	var rotationY : Float;
 	/**
-	 * Instantiates an HDRTexture from the following parameters.
-	 *
-	 * @param url The location of the HDR raw data (Panorama stored in RGBE format)
-	 * @param scene The scene the texture will be used in
-	 * @param size The cubemap desired size (the more it increases the longer the generation will be) If the size is omitted this implies you are using a preprocessed cubemap.
-	 * @param noMipmap Forces to not generate the mipmap if true
-	 * @param generateHarmonics Specifies wether you want to extract the polynomial harmonics during the generation process
-	 * @param useInGammaSpace Specifies if the texture will be use in gamma or linear space (the PBR material requires those texture in linear space, but the standard material would require them in Gamma space)
-	 * @param usePMREMGenerator Specifies wether or not to generate the CubeMap through CubeMapGen to avoid seams issue at run time.
+	 * Gets or sets the center of the bounding box associated with the cube texture
+	 * It must define where the camera used to render the texture was set
 	 */
-	function new(url:String, scene:Scene, ?size:Float, ?noMipmap:Bool, ?generateHarmonics:Bool, ?useInGammaSpace:Bool, ?usePMREMGenerator:Bool) : Void;
+	var boundingBoxPosition : Vector3;
+	private var _boundingBoxSize : Dynamic;
 	/**
-	 * Occurs when the file is a preprocessed .babylon.hdr file.
+	 * Gets or sets the size of the bounding box associated with the cube texture
+	 * When defined, the cubemap will switch to local mode
+	 * @see https://community.arm.com/graphics/b/blog/posts/reflections-based-on-local-cubemaps-in-unity
+	 * @example https://www.babylonjs-playground.com/#RNASML
 	 */
-	private function loadBabylonTexture();
+	var boundingBoxSize : Vector3;
+
+	/**
+	 * This represents a texture coming from an HDR input.
+	 * 
+	 * The only supported format is currently panorama picture stored in RGBE format.
+	 * Example of such files can be found on HDRLib: http://hdrlib.com/
+	 */
+	@:overload(function(url:String, scene:Scene, size:Float,?noMipmap:Bool,?generateHarmonics:Bool,?gammaSpace:Bool,?reserved:Bool,?onLoad:Null<Void->Void>,?onError:Null<String->Dynamic->Void>): Void{})
+	function new(scene:Null<Scene>) : Void;
 	/**
 	 * Occurs when the file is raw .hdr file.
 	 */
-	private function loadHDRTexture();
-	/**
-	 * Starts the loading process of the texture.
-	 */
-	private function loadTexture();
-	function clone() : HDRCubeTexture;
-	function delayLoad() : Void;
-	function getReflectionTextureMatrix() : Matrix;
-	static function Parse(parsedTexture:Dynamic, scene:Scene, rootUrl:String) : HDRCubeTexture;
-	function serialize() : Dynamic;
-	/**
-	 * Saves as a file the data contained in the texture in a binary format.
-	 * This can be used to prevent the long loading tie associated with creating the seamless texture as well
-	 * as the spherical used in the lighting.
-	 * @param url The HDR file url.
-	 * @param size The size of the texture data to generate (one of the cubemap face desired width).
-	 * @param onError Method called if any error happens during download.
-	 * @return The packed binary data.
-	 */
-	static function generateBabylonHDROnDisk(url:String, size:Float, onError?: (() => void)) : Void;
-	/**
-	 * Serializes the data contained in the texture in a binary format.
-	 * This can be used to prevent the long loading tie associated with creating the seamless texture as well
-	 * as the spherical used in the lighting.
-	 * @param url The HDR file url.
-	 * @param size The size of the texture data to generate (one of the cubemap face desired width).
-	 * @param onError Method called if any error happens during download.
-	 * @return The packed binary data.
-	 */
-	static function generateBabylonHDR(url:String, size:Float, callback: ((ArrayBuffer) => void), onError?: (() => void)) : Void;
+	private function loadTexture() : Dynamic;
+	@:overload(function(): HDRCubeTexture{})
+	override function clone() : Null<BaseTexture>;
+	override function delayLoad() : Void;
+	override function getReflectionTextureMatrix() : Matrix;
+	function setReflectionTextureMatrix(value:Matrix) : Void;
+	static function Parse(parsedTexture:Dynamic, scene:Scene, rootUrl:String) : Null<HDRCubeTexture>;
+	override function serialize() : Dynamic;
 }

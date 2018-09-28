@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.Tmp")
 extern class Tmp
 {
 	static var Color3 : Array<Color3>;

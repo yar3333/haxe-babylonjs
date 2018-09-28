@@ -1,8 +1,21 @@
-package babylon;
+package babylonjs.babylon;
 
-extern enum WorkerTaskType
+/**
+ * Defines supported task for worker process 
+ */
+@:native("BABYLON.WorkerTaskType")
+@:enum abstract WorkerTaskType(Dynamic)
 {
-	INIT = 0;
-	UPDATE = 1;
-	COLLIDE = 2;
+	/**
+	 * Initialization 
+	 */
+	var INIT = 0;
+	/**
+	 * Update of geometry 
+	 */
+	var UPDATE = 1;
+	/**
+	 * Evaluate collision 
+	 */
+	var COLLIDE = 2;
 }

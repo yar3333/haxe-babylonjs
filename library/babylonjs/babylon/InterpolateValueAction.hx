@@ -1,17 +1,21 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.InterpolateValueAction")
 extern class InterpolateValueAction extends Action
 {
 	var propertyPath : String;
 	var value : Dynamic;
 	var duration : Float;
-	var stopOtherAnimations : Bool;
-	var onInterpolationDone : Void->Void;
-	private var _target : Dynamic/*UNKNOW_TYPE*/;
-	private var _effectiveTarget : Dynamic/*UNKNOW_TYPE*/;
-	private var _property : Dynamic/*UNKNOW_TYPE*/;
-	function new(triggerOptions:Dynamic, target:Dynamic, propertyPath:String, value:Dynamic, ?duration:Float, ?condition:Condition, ?stopOtherAnimations:Bool, ?onInterpolationDone:Void->Void) : Void;
-	function _prepare() : Void;
-	function execute() : Void;
-	function serialize(parent:Dynamic) : Dynamic;
+	var stopOtherAnimations : haxe.extern.EitherType<Bool, {}>;
+	var onInterpolationDone : haxe.extern.EitherType<(Void->Void), {}>;
+	private var _target : Dynamic;
+	private var _effectiveTarget : Dynamic;
+	private var _property : Dynamic;
+	var onInterpolationDoneObservable : Observable<InterpolateValueAction>;
+
+	function new(triggerOptions:Dynamic, target:Dynamic, propertyPath:String, value:Dynamic, ?duration:Float, ?condition:Condition, ?stopOtherAnimations:haxe.extern.EitherType<Bool, {}>, ?onInterpolationDone:haxe.extern.EitherType<(Void->Void), {}>) : Void;
+	override function _prepare() : Void;
+	@:overload(function(): Void{})
+	override function execute(?evt:ActionEvent) : Void;
+	override function serialize(parent:Dynamic) : Dynamic;
 }

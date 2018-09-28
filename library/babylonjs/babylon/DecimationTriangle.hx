@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.DecimationTriangle")
 extern class DecimationTriangle
 {
 	var vertices : Array<DecimationVertex>;
@@ -10,5 +11,6 @@ extern class DecimationTriangle
 	var borderFactor : Float;
 	var deletePending : Bool;
 	var originalOffset : Float;
+
 	function new(vertices:Array<DecimationVertex>) : Void;
 }

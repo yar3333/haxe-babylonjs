@@ -1,13 +1,39 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class TextFileAssetTask implements IAssetTask
+/**
+ * Define a task used by {BABYLON.AssetsManager} to load text content
+ */
+@:native("BABYLON.TextFileAssetTask")
+extern class TextFileAssetTask extends AbstractAssetTask
 {
-	var name : String;
+	/**
+	 * Defines the name of the task
+	 */
+	//var name : String;
+	/**
+	 * Defines the location of the file to load
+	 */
 	var url : String;
-	var onSuccess : IAssetTask->Void;
-	var onError : IAssetTask->Void;
-	var isCompleted : Bool;
+	/**
+	 * Gets the loaded text string
+	 */
 	var text : String;
-	function new(name:String, url:String) : Void;
-	function run(scene:Scene, onSuccess:Void->Void, onError:Void->Void) : Void;
+	/**
+	 * Callback called when the task is successful
+	 */
+	//var onSuccess : TextFileAssetTask->Void;
+	/**
+	 * Callback called when the task is successful
+	 */
+	//var onError : TextFileAssetTask->String->Dynamic->Void;
+
+	/**
+	 * Define a task used by {BABYLON.AssetsManager} to load text content
+	 */
+	@:overload(function(name:String, url:String): Void{})
+	function new(name:String) : Void;
+	/**
+	 * Execute the current task
+	 */
+	override function runTask(scene:Scene, onSuccess:Void->Void, onError:String->Dynamic->Void) : Void;
 }

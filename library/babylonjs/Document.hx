@@ -1,15 +1,14 @@
-package root;
+package babylonjs;
 
 extern interface Document
 {
-function exitFullscreen() : Void;
-function webkitCancelFullScreen() : Void;
-function mozCancelFullScreen() : Void;
-function msCancelFullScreen() : Void;
-var mozFullScreen : Bool;
-var msIsFullScreen : Bool;
-var fullscreen : Bool;
-var mozPointerLockElement : HtmlElement;
-var msPointerLockElement : HtmlElement;
-var webkitPointerLockElement : HtmlElement;
+	var mozFullScreen : Bool;
+	var msIsFullScreen : Bool;
+	var fullscreen : Bool;
+	var mozPointerLockElement : js.html.Element;
+	var msPointerLockElement : js.html.Element;
+	var webkitPointerLockElement : js.html.Element;
+
+	function mozCancelFullScreen() : Void;
+	function msCancelFullScreen() : Void;
 }

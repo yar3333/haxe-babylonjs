@@ -1,9 +1,8 @@
-package root;
+package babylonjs;
 
 extern interface HTMLCanvasElement
 {
-function requestPointerLock() : Void;
-@:optional function msRequestPointerLock() : Void;
-@:optional function mozRequestPointerLock() : Void;
-@:optional function webkitRequestPointerLock() : Void;
+	function msRequestPointerLock() : Void;
+	function mozRequestPointerLock() : Void;
+	function webkitRequestPointerLock() : Void;
 }

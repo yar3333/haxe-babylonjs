@@ -1,17 +1,18 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.CSG")
 extern class CSG
 {
-	private var polygons : Dynamic/*UNKNOW_TYPE*/;
+	private var polygons : Dynamic;
 	var matrix : Matrix;
 	var position : Vector3;
 	var rotation : Vector3;
-	var rotationQuaternion : Quaternion;
+	var rotationQuaternion : Null<Quaternion>;
 	var scaling : Vector3;
+
 	static function FromMesh(mesh:Mesh) : CSG;
-	private static function FromPolygons(polygons);
+	private static function FromPolygons(polygons:Dynamic) : Dynamic;
 	function clone() : CSG;
-	private function toPolygons();
 	function union(csg:CSG) : CSG;
 	function unionInPlace(csg:CSG) : Void;
 	function subtract(csg:CSG) : CSG;
@@ -22,5 +23,5 @@ extern class CSG
 	function inverseInPlace() : Void;
 	function copyTransformAttributes(csg:CSG) : CSG;
 	function buildMeshGeometry(name:String, scene:Scene, keepSubMeshes:Bool) : Mesh;
-	function toMesh(name:String, material:Material, scene:Scene, keepSubMeshes:Bool) : Mesh;
+	function toMesh(name:String, material:Null<Material>, scene:Scene, keepSubMeshes:Bool) : Mesh;
 }

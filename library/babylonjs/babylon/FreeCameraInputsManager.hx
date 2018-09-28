@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.FreeCameraInputsManager")
 extern class FreeCameraInputsManager extends CameraInputsManager<FreeCamera>
 {
 	function new(camera:FreeCamera) : Void;

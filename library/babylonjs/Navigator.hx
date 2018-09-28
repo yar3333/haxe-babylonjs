@@ -1,9 +1,15 @@
-package root;
+package babylonjs;
 
 extern interface Navigator
 {
-function getGamepads(?func:Dynamic) : Dynamic;
-function webkitGetGamepads(?func:Dynamic) : Dynamic;
-function msGetGamepads(?func:Dynamic) : Dynamic;
-function webkitGamepads(?func:Dynamic) : Dynamic;
+	var mozGetVRDevices : Dynamic->Dynamic;
+	var activeVRDisplays(default, null) : Array<VRDisplay>;
+
+	function webkitGetUserMedia(constraints:js.html.MediaStreamConstraints, successCallback:NavigatorUserMediaSuccessCallback, errorCallback:NavigatorUserMediaErrorCallback) : Void;
+	function mozGetUserMedia(constraints:js.html.MediaStreamConstraints, successCallback:NavigatorUserMediaSuccessCallback, errorCallback:NavigatorUserMediaErrorCallback) : Void;
+	function msGetUserMedia(constraints:js.html.MediaStreamConstraints, successCallback:NavigatorUserMediaSuccessCallback, errorCallback:NavigatorUserMediaErrorCallback) : Void;
+	function webkitGetGamepads() : Array<Gamepad>;
+	function msGetGamepads() : Array<Gamepad>;
+	function webkitGamepads() : Array<Gamepad>;
+	function getVRDisplays() : js.Promise<Array<VRDisplay>>;
 }

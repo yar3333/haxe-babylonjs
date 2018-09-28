@@ -1,5 +1,9 @@
-package babylon;
+package babylonjs.babylon;
 
+/**
+ * This class is used by the onRenderingGroupObservable
+ */
+@:native("BABYLON.RenderingGroupInfo")
 extern class RenderingGroupInfo
 {
 	/**
@@ -9,7 +13,7 @@ extern class RenderingGroupInfo
 	/**
 	 * The camera currently used for the rendering pass
 	 */
-	var camera : Camera;
+	var camera : Null<Camera>;
 	/**
 	 * The ID of the renderingGroup being processed
 	 */

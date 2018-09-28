@@ -1,15 +1,18 @@
-package babylon;
+package babylonjs.babylon;
 
-extern class FreeCameraVirtualJoystickInput implements ICameraInput<FreeCamera>
+@:native("BABYLON.FreeCameraVirtualJoystickInput")
+extern class FreeCameraVirtualJoystickInput
+	implements ICameraInput<FreeCamera>
 {
 	var camera : FreeCamera;
-	private var _leftjoystick : Dynamic/*UNKNOW_TYPE*/;
-	private var _rightjoystick : Dynamic/*UNKNOW_TYPE*/;
+	private var _leftjoystick : Dynamic;
+	private var _rightjoystick : Dynamic;
+
 	function getLeftJoystick() : VirtualJoystick;
 	function getRightJoystick() : VirtualJoystick;
 	function checkInputs() : Void;
-	function attachControl(element:HtmlElement, ?noPreventDefault:Bool) : Void;
-	function detachControl(element:HtmlElement) : Void;
-	function getTypeName() : String;
+	function attachControl(element:js.html.Element, ?noPreventDefault:Bool) : Void;
+	function detachControl(element:Null<js.html.Element>) : Void;
+	function getClassName() : String;
 	function getSimpleName() : String;
 }

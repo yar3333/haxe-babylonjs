@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.FollowCamera")
 extern class FollowCamera extends TargetCamera
 {
 	var radius : Float;
@@ -7,10 +8,12 @@ extern class FollowCamera extends TargetCamera
 	var heightOffset : Float;
 	var cameraAcceleration : Float;
 	var maxCameraSpeed : Float;
-	var lockedTarget : AbstractMesh;
-	function new(name:String, position:Vector3, scene:Scene, ?lockedTarget:AbstractMesh) : Void;
-	private function getRadians(degrees);
-	private function follow(cameraTarget);
-	function _checkInputs() : Void;
-	function getTypeName() : String;
+	//var lockedTarget : Null<AbstractMesh>;
+
+	@:overload(function(name:String, position:Vector3, scene:Scene,?lockedTarget:Null<AbstractMesh>): Void{})
+	function new(name:String, ?scene:Null<Scene>) : Void;
+	private function getRadians(degrees:Dynamic) : Dynamic;
+	private function follow(cameraTarget:Dynamic) : Dynamic;
+	override function _checkInputs() : Void;
+	override function getClassName() : String;
 }

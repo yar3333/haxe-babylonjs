@@ -1,16 +1,24 @@
-package babylon;
+package babylonjs.babylon;
 
 extern interface IPhysicsEnabledObject
 {
 	var position : Vector3;
-	var rotationQuaternion : Quaternion;
+	var rotationQuaternion : Null<Quaternion>;
 	var scaling : Vector3;
 	@:optional var rotation : Vector3;
 	@:optional var parent : Dynamic;
-	@:optional function getBoundingInfo() : BoundingInfo;
-	@:optional function computeWorldMatrix(force:Bool) : Void;
-	@:optional function getChildMeshes() : Array<AbstractMesh>;
-	@:optional function getVerticesData(kind:String) : haxe.extern.EitherType<Array<Float>, Float32Array>;
-	@:optional function getIndices() : haxe.extern.EitherType<Array<Float>, Int32Array>;
-	@:optional function getScene() : Scene;
+
+	function getBoundingInfo() : BoundingInfo;
+	function computeWorldMatrix(force:Bool) : Matrix;
+	function getWorldMatrix() : Matrix;
+	function getChildMeshes(?directDescendantsOnly:Bool) : Array<AbstractMesh>;
+	function getVerticesData(kind:String) : Null<haxe.extern.EitherType<Array<Float>, js.html.Float32Array>>;
+	function getIndices() : Null<IndicesArray>;
+	function getScene() : Scene;
+	function getAbsolutePosition() : Vector3;
+	function getAbsolutePivotPoint() : Vector3;
+	function rotate(axis:Vector3, amount:Float, ?space:Space) : TransformNode;
+	function translate(axis:Vector3, distance:Float, ?space:Space) : TransformNode;
+	function setAbsolutePosition(absolutePosition:Vector3) : TransformNode;
+	function getClassName() : String;
 }

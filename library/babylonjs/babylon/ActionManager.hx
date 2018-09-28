@@ -1,84 +1,210 @@
-package babylon;
+package babylonjs.babylon;
 
+/**
+ * Action Manager manages all events to be triggered on a given mesh or the global scene.
+ * A single scene can have many Action Managers to handle predefined actions on specific meshes.
+ * @see http://doc.babylonjs.com/how_to/how_to_use_actions
+ */
+@:native("BABYLON.ActionManager")
 extern class ActionManager
 {
-	private static var _NothingTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnPickTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnLeftPickTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnRightPickTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnCenterPickTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnPickDownTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnPickUpTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnLongPressTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnPointerOverTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnPointerOutTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnEveryFrameTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnIntersectionEnterTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnIntersectionExitTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnKeyDownTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnKeyUpTrigger : Dynamic/*UNKNOW_TYPE*/;
-	private static var _OnPickOutTrigger : Dynamic/*UNKNOW_TYPE*/;
-	static var NothingTrigger : Float;
-	static var OnPickTrigger : Float;
-	static var OnLeftPickTrigger : Float;
-	static var OnRightPickTrigger : Float;
-	static var OnCenterPickTrigger : Float;
-	static var OnPickDownTrigger : Float;
-	static var OnPickUpTrigger : Float;
-	static var OnPickOutTrigger : Float;
-	static var OnLongPressTrigger : Float;
-	static var OnPointerOverTrigger : Float;
-	static var OnPointerOutTrigger : Float;
-	static var OnEveryFrameTrigger : Float;
-	static var OnIntersectionEnterTrigger : Float;
-	static var OnIntersectionExitTrigger : Float;
-	static var OnKeyDownTrigger : Float;
-	static var OnKeyUpTrigger : Float;
-	static var DragMovementThreshold : Float;
-	static var LongPressDelay : Float;
+	private static var _NothingTrigger : Dynamic;
+	private static var _OnPickTrigger : Dynamic;
+	private static var _OnLeftPickTrigger : Dynamic;
+	private static var _OnRightPickTrigger : Dynamic;
+	private static var _OnCenterPickTrigger : Dynamic;
+	private static var _OnPickDownTrigger : Dynamic;
+	private static var _OnDoublePickTrigger : Dynamic;
+	private static var _OnPickUpTrigger : Dynamic;
+	private static var _OnLongPressTrigger : Dynamic;
+	private static var _OnPointerOverTrigger : Dynamic;
+	private static var _OnPointerOutTrigger : Dynamic;
+	private static var _OnEveryFrameTrigger : Dynamic;
+	private static var _OnIntersectionEnterTrigger : Dynamic;
+	private static var _OnIntersectionExitTrigger : Dynamic;
+	private static var _OnKeyDownTrigger : Dynamic;
+	private static var _OnKeyUpTrigger : Dynamic;
+	private static var _OnPickOutTrigger : Dynamic;
+	/**
+	 * Nothing
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var NothingTrigger(default, null) : Float;
+	/**
+	 * On pick
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnPickTrigger(default, null) : Float;
+	/**
+	 * On left pick
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnLeftPickTrigger(default, null) : Float;
+	/**
+	 * On right pick
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnRightPickTrigger(default, null) : Float;
+	/**
+	 * On center pick
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnCenterPickTrigger(default, null) : Float;
+	/**
+	 * On pick down
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnPickDownTrigger(default, null) : Float;
+	/**
+	 * On double pick
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnDoublePickTrigger(default, null) : Float;
+	/**
+	 * On pick up
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnPickUpTrigger(default, null) : Float;
+	/**
+	 * On pick out.
+	 * This trigger will only be raised if you also declared a OnPickDown
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnPickOutTrigger(default, null) : Float;
+	/**
+	 * On long press
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnLongPressTrigger(default, null) : Float;
+	/**
+	 * On pointer over
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnPointerOverTrigger(default, null) : Float;
+	/**
+	 * On pointer out
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnPointerOutTrigger(default, null) : Float;
+	/**
+	 * On every frame
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnEveryFrameTrigger(default, null) : Float;
+	/**
+	 * On intersection enter
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnIntersectionEnterTrigger(default, null) : Float;
+	/**
+	 * On intersection exit
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnIntersectionExitTrigger(default, null) : Float;
+	/**
+	 * On key down
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnKeyDownTrigger(default, null) : Float;
+	/**
+	 * On key up
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	 */
+	static var OnKeyUpTrigger(default, null) : Float;
+	/**
+	 * Gets the list of active triggers 
+	 */
+	static var Triggers : Dynamic<Float>;
+	/**
+	 * Gets the list of actions 
+	 */
 	var actions : Array<Action>;
+	/**
+	 * Gets the cursor to use when hovering items 
+	 */
 	var hoverCursor : String;
-	private var _scene : Dynamic/*UNKNOW_TYPE*/;
+	private var _scene : Dynamic;
+	/**
+	 * Does this action manager has pointer triggers
+	 */
+	var hasPointerTriggers(default, null) : Bool;
+	/**
+	 * Does this action manager has pick triggers
+	 */
+	var hasPickTriggers(default, null) : Bool;
+	/**
+	 * Does exist one action manager with at least one trigger
+	 */
+	static var HasTriggers(default, null) : Bool;
+	/**
+	 * Does exist one action manager with at least one pick trigger
+	 */
+	static var HasPickTriggers(default, null) : Bool;
+
+	/**
+	 * Action Manager manages all events to be triggered on a given mesh or the global scene.
+	 * A single scene can have many Action Managers to handle predefined actions on specific meshes.
+	 * @see http://doc.babylonjs.com/how_to/how_to_use_actions
+	 */
 	function new(scene:Scene) : Void;
+	/**
+	 * Releases all associated resources
+	 */
 	function dispose() : Void;
+	/**
+	 * Gets hosting scene
+	 * @returns the hosting scene
+	 */
 	function getScene() : Scene;
 	/**
 	 * Does this action manager handles actions of any of the given triggers
-	 * @param {number[]} triggers - the triggers to be tested
-	 * @return {boolean} whether one (or more) of the triggers is handeled
+	 * @return a boolean indicating whether one (or more) of the triggers is handled
 	 */
 	function hasSpecificTriggers(triggers:Array<Float>) : Bool;
 	/**
 	 * Does this action manager handles actions of a given trigger
-	 * @param {number} trigger - the trigger to be tested
-	 * @return {boolean} whether the trigger is handeled
+	 * @return whether the trigger is handled
 	 */
-	function hasSpecificTrigger(trigger:Float) : Bool;
+	function hasSpecificTrigger(trigger:Float, ?parameterPredicate:Dynamic->Bool) : Bool;
 	/**
-	 * Does this action manager has pointer triggers
-	 * @return {boolean} whether or not it has pointer triggers
+	 * Does exist one action manager that handles actions of a given trigger
+	 * @return a boolean indicating whether the trigger is handeled by at least one action manager
 	 */
-	var hasPointerTriggers : Bool;
-	/**
-	 * Does this action manager has pick triggers
-	 * @return {boolean} whether or not it has pick triggers
-	 */
-	var hasPickTriggers : Bool;
+	static function HasSpecificTrigger(trigger:Float) : Bool;
 	/**
 	 * Registers an action to this action manager
-	 * @param {BABYLON.Action} action - the action to be registered
-	 * @return {BABYLON.Action} the action amended (prepared) after registration
+	 * @return the action amended (prepared) after registration
 	 */
-	function registerAction(action:Action) : Action;
+	function registerAction(action:Action) : Null<Action>;
+	/**
+	 * Unregisters an action to this action manager
+	 * @return a boolean indicating whether the action has been unregistered
+	 */
+	function unregisterAction(action:Action) : Bool;
 	/**
 	 * Process a specific trigger
-	 * @param {number} trigger - the trigger to process
-	 * @param evt {BABYLON.ActionEvent} the event details to be processed
 	 */
-	function processTrigger(trigger:Float, evt:ActionEvent) : Void;
+	function processTrigger(trigger:Float, ?evt:ActionEvent) : Void;
+	/**
+	 * @hidden 
+	 */
 	function _getEffectiveTarget(target:Dynamic, propertyPath:String) : Dynamic;
+	/**
+	 * @hidden 
+	 */
 	function _getProperty(propertyPath:String) : String;
+	/**
+	 * Serialize this manager to a JSON object
+	 * @returns a JSON representation of this manager
+	 */
 	function serialize(name:String) : Dynamic;
-	static function Parse(parsedActions:Dynamic, object:AbstractMesh, scene:Scene) : Void;
+	/**
+	 * Creates a new ActionManager from a JSON data
+	 */
+	static function Parse(parsedActions:Dynamic, object:Null<AbstractMesh>, scene:Scene) : Void;
+	/**
+	 * Get a trigger name by index
+	 * @returns a trigger name
+	 */
 	static function GetTriggerName(trigger:Float) : String;
 }

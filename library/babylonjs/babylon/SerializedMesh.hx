@@ -1,11 +1,11 @@
-package babylon;
+package babylonjs.babylon;
 
 extern interface SerializedMesh
 {
 	var id : String;
 	var name : String;
 	var uniqueId : Float;
-	var geometryId : String;
+	var geometryId : Null<String>;
 	var sphereCenter : Array<Float>;
 	var sphereRadius : Float;
 	var boxMinimum : Array<Float>;

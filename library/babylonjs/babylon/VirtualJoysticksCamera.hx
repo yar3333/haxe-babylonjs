@@ -1,6 +1,9 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.VirtualJoysticksCamera")
 extern class VirtualJoysticksCamera extends FreeCamera
 {
-	function new(name:String, position:Vector3, scene:Scene) : Void;
+	@:overload(function(name:String, position:Vector3, scene:Scene): Void{})
+	function new(name:String, ?scene:Null<Scene>) : Void;
+	override function getClassName() : String;
 }

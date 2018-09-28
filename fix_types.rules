@@ -1,0 +1,89 @@
+Promise => js.Promise
+RegExp => js.RegExp
+Error => js.Error
+
+ArrayBuffer => js.html.ArrayBuffer
+ArrayBufferView => js.html.ArrayBufferView
+Uint8Array => js.html.Uint8Array
+Int32Array => js.html.Int32Array
+Uint32Array => js.html.Uint32Array
+Uint16Array => js.html.Uint16Array
+Float32Array => js.html.Float32Array
+Blob => js.html.Blob
+
+XMLHttpRequest => js.html.XMLHttpRequest
+File => js.html.File
+Worker => js.html.Worker
+MediaStreamConstraints => js.html.MediaStreamConstraints
+
+IDBFactory => js.html.idb.Factory
+
+EventTarget => js.html.EventTarget
+PointerEvent => js.html.PointerEvent
+PointerEventInit => js.html.PointerEventInit
+KeyboardEvent => js.html.KeyboardEvent
+GamepadButton => js.html.GamepadButton
+Event => js.html.Event
+MouseWheelEvent => js.html.WheelEvent
+DeviceOrientationEvent => js.html.DeviceOrientationEvent
+ProgressEvent => js.html.ProgressEvent
+FocusEvent => js.html.FocusEvent
+
+Window => js.html.Window
+HTMLElement => js.html.Element
+HTMLImageElement => js.html.ImageElement
+ImageData => js.html.ImageData
+HTMLCanvasElement => js.html.CanvasElement
+HTMLVideoElement => js.html.VideoElement
+HTMLButtonElement => js.html.ButtonElement
+
+AudioContext => js.html.audio.AudioContext
+AudioBufferSourceNode => js.html.audio.AudioBufferSourceNode
+GainNode => js.html.audio.GainNode
+PannerNode => js.html.audio.PannerNode
+AudioBuffer => js.html.audio.AudioBuffer
+AudioNode => js.html.audio.AudioNode
+
+WebGLRenderingContext => js.html.webgl.RenderingContext
+WebGLFramebuffer => js.html.webgl.Framebuffer
+WebGLRenderbuffer => js.html.webgl.Renderbuffer
+WebGLTexture => js.html.webgl.Texture
+WebGLContextEvent => js.html.webgl.ContextEvent
+WEBGL_compressed_texture_s3tc => js.html.webgl.ExtensionCompressedTextureS3TC
+EXT_texture_filter_anisotropic => js.html.webgl.ExtensionTextureFilterAnisotropic
+WebGLContextAttributes => js.html.webgl.ContextAttributes
+
+ReadonlyArray => Array
+
+float => Float
+double => Float
+int => Int
+
+*i => Int if Float
+
+babylonjs.BABYLON.AbstractMesh@OCCLUSION_TYPE_NONE => Int if Float
+babylonjs.BABYLON.AbstractMesh@OCCLUSION_TYPE_OPTIMISTIC => Int if Float
+babylonjs.BABYLON.AbstractMesh@OCCLUSION_TYPE_STRICT => Int if Float
+
+babylonjs.BABYLON.AbstractMesh@OCCLUSION_ALGORITHM_TYPE_ACCURATE => Int if Float
+babylonjs.BABYLON.AbstractMesh@OCCLUSION_ALGORITHM_TYPE_CONSERVATIVE => Int if Float
+
+babylonjs.BABYLON.AbstractMesh@BILLBOARDMODE_NONE => Int if Float
+babylonjs.BABYLON.AbstractMesh@BILLBOARDMODE_X => Int if Float
+babylonjs.BABYLON.AbstractMesh@BILLBOARDMODE_Y => Int if Float
+babylonjs.BABYLON.AbstractMesh@BILLBOARDMODE_Z => Int if Float
+babylonjs.BABYLON.AbstractMesh@BILLBOARDMODE_ALL => Int if Float
+
+babylonjs.BABYLON.AbstractMesh@facetNb => Int if Float
+babylonjs.BABYLON.AbstractMesh@partitioningSubdivisions => Int if Float
+babylonjs.BABYLON.AbstractMesh@occlusionQueryAlgorithmType => Int if Float
+babylonjs.BABYLON.AbstractMesh@occlusionType => Int if Float
+babylonjs.BABYLON.AbstractMesh@occlusionRetryCount => Int if Float
+babylonjs.BABYLON.AbstractMesh@renderingGroupId => Int if Float
+babylonjs.BABYLON.AbstractMesh@numBoneInfluencers => Int if Float
+babylonjs.BABYLON.AbstractMesh@layerMask => Int if Float
+babylonjs.BABYLON.AbstractMesh@getTotalVertices => Int if Float
+babylonjs.BABYLON.AbstractMesh@getFacetsAtLocalCoordinates => Nullable<Array<Int>> if Nullable<Array<Float>>
+babylonjs.BABYLON.AbstractMesh@getClosestFacetAtCoordinates => Nullable<Int> if Nullable<Float>
+babylonjs.BABYLON.AbstractMesh@getClosestFacetAtLocalCoordinates => Nullable<Int> if Nullable<Float>
+babylonjs.BABYLON.AbstractMesh@getIndices => haxe.extern.EitherType<Array<Int>, Int32Array> if haxe.extern.EitherType<Array<Float>, Int32Array>

@@ -1,5 +1,9 @@
-package babylon;
+package babylonjs.babylon;
 
+/**
+ * Interface for attribute information associated with buffer instanciation
+ */
+@:native("BABYLON.InstancingAttributeInfo")
 extern class InstancingAttributeInfo
 {
 	/**

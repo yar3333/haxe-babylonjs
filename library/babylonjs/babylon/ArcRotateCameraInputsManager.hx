@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.ArcRotateCameraInputsManager")
 extern class ArcRotateCameraInputsManager extends CameraInputsManager<ArcRotateCamera>
 {
 	function new(camera:ArcRotateCamera) : Void;

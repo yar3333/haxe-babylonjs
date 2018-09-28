@@ -1,5 +1,6 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.Arc2")
 extern class Arc2
 {
 	var startPoint : Vector2;
@@ -10,5 +11,6 @@ extern class Arc2
 	var angle : Angle;
 	var startAngle : Angle;
 	var orientation : Orientation;
+
 	function new(startPoint:Vector2, midPoint:Vector2, endPoint:Vector2) : Void;
 }

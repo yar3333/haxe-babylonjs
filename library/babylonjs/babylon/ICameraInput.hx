@@ -1,11 +1,12 @@
-package babylon;
+package babylonjs.babylon;
 
-extern interface ICameraInput<TCamera:BABYLON.Camera>
+extern interface ICameraInput<TCamera:Camera>
 {
-	var camera : TCamera;
-	function getTypeName() : String;
-	function getSimpleName() : String;
-	attachControl: (element:HtmlElement, ?noPreventDefault:Bool) => void;
-	var detachControl : HtmlElement->Void;
+	var camera : Null<TCamera>;
+	var attachControl : js.html.Element->Bool->Void;
+	var detachControl : Null<js.html.Element>->Void;
 	@:optional var checkInputs : Void->Void;
+
+	function getClassName() : String;
+	function getSimpleName() : String;
 }

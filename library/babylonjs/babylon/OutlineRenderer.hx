@@ -1,10 +1,13 @@
-package babylon;
+package babylonjs.babylon;
 
+@:native("BABYLON.OutlineRenderer")
 extern class OutlineRenderer
 {
-	private var _scene : Dynamic/*UNKNOW_TYPE*/;
-	private var _effect : Dynamic/*UNKNOW_TYPE*/;
-	private var _cachedDefines : Dynamic/*UNKNOW_TYPE*/;
+	private var _scene : Dynamic;
+	private var _effect : Dynamic;
+	private var _cachedDefines : Dynamic;
+	var zOffset : Float;
+
 	function new(scene:Scene) : Void;
 	function render(subMesh:SubMesh, batch:_InstancesBatch, ?useOverlay:Bool) : Void;
 	function isReady(subMesh:SubMesh, useInstances:Bool) : Bool;
