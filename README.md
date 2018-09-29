@@ -29,12 +29,12 @@ Haxe code:
 ```haxe
 import js.Browser.window;
 import js.Browser.document;
-import babylonjs.babylon.Engine;
-import babylonjs.babylon.Scene;
-import babylonjs.babylon.MeshBuilder;
-import babylonjs.babylon.FreeCamera;
-import babylonjs.babylon.Vector3;
-import babylonjs.babylon.HemisphericLight;
+import babylonjs.Engine;
+import babylonjs.Scene;
+import babylonjs.MeshBuilder;
+import babylonjs.FreeCamera;
+import babylonjs.Vector3;
+import babylonjs.HemisphericLight;
 import js.html.CanvasElement;
 
 class Main
