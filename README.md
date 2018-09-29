@@ -104,8 +104,6 @@ class Main
 
 ### Project structure
 
-Folders:
-
  * native-ts - folder contains original typescript definitions file;
  * manual - folder contains manually created files (copied to library at final step);
  * fix_types.rules - edit this file to map types and fix Float->Int;
