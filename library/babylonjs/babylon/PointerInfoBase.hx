@@ -1,5 +1,4 @@
 package babylonjs.babylon;
-import js.html.MouseScrollEvent;
 
 @:native("BABYLON.PointerInfoBase")
 extern class PointerInfoBase
