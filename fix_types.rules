@@ -53,8 +53,6 @@ WEBGL_compressed_texture_s3tc => js.html.webgl.ExtensionCompressedTextureS3TC
 EXT_texture_filter_anisotropic => js.html.webgl.ExtensionTextureFilterAnisotropic
 WebGLContextAttributes => js.html.webgl.ContextAttributes
 
-ReadonlyArray => Array
-
 float => Float
 double => Float
 int => Int
