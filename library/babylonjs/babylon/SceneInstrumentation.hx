@@ -135,5 +135,5 @@ extern class SceneInstrumentation
 	 * This class can be used to get instrumentation data from a Babylon engine
 	 */
 	function new(scene:Scene) : Void;
-	function dispose(?deep:Bool) : Void;
+	function dispose() : Void;
 }
