@@ -12,6 +12,7 @@ build: native-ts/**
 	
 	haxelib run refactor replace library/babylonjs/babylon *.hx !babylonjs[.]babylon!babylonjs!
 	mv library/babylonjs/babylon/* library/babylonjs
+	rm library/babylonjs/babylon
 	
 	haxelib run refactor rename library Babylonjs babylonjs.Globals
 	
