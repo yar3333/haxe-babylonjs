@@ -36,14 +36,6 @@ Std.__name__ = true;
 Std.string = function(s) {
 	return js_Boot.__string_rec(s,"");
 };
-var babylonjs_TTT = function() { };
-babylonjs_TTT.__name__ = true;
-babylonjs_TTT.f = function() {
-	var a = { };
-	return a[0];
-};
-var babylonjs_WebGLObject = function() { };
-babylonjs_WebGLObject.__name__ = true;
 var haxe_io_FPHelper = function() { };
 haxe_io_FPHelper.__name__ = true;
 haxe_io_FPHelper.i32ToFloat = function(i) {

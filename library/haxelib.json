@@ -1,0 +1,11 @@
+{
+  "name": "babylonjs",
+  "license": "BSD",
+  "tags": ["babylon","javascript", "js", "extern", "3D"],
+  "description": "Externs for BabylonJS. Conversion from typescript definition file using `refactor` haxe library. Features: original comments, mapping to haxe types.",
+  "contributors": ["yar3333"],
+  "releasenote": "Basic test passed.",
+  "version": "3.2.0",
+  "url": "https://bitbucket.org/yar3333/haxe-babylonjs",
+  "dependencies": {}
+}
