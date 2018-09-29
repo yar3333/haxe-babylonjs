@@ -29,8 +29,7 @@ extern class NullEngine extends Engine
 	override function setViewport(viewport:Viewport, ?requiredWidth:Float, ?requiredHeight:Float) : Void;
 	@:overload(function(vertexCode:String, fragmentCode:String, defines:String,?context:js.html.webgl.RenderingContext): WebGLProgram{})
 	override function createShaderProgram(vertexCode:String, fragmentCode:String, defines:Null<String>, ?context:js.html.webgl.RenderingContext, ?transformFeedbackVaryings:Null<Array<String>>) : WebGLProgram;
-	@:overload(function(shaderProgram:WebGLProgram, uniformsNames:Array<String>): Array<WebGLUniformLocation>{})
-	override function getUniforms(shaderProgram:WebGLProgram, uniformsNames:Array<String>) : Array<Dynamic>;
+	override function getUniforms(shaderProgram:WebGLProgram, uniformsNames:Array<String>) : Array<WebGLUniformLocation>;
 	override function getAttributes(shaderProgram:WebGLProgram, attributesNames:Array<String>) : Array<Float>;
 	override function bindSamplers(effect:Effect) : Void;
 	@:overload(function(effect:Effect): Void{})
