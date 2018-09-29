@@ -36,6 +36,6 @@ extern class Curve3
 	 * This new Curve3 is built by translating and sticking the curveB at the end of the curveA.
 	 * curveA and curveB keep unchanged.
 	 */
-	inline function continue_(curve:Curve3) : Curve3 return (cast this)[cast "continue"](curve);
+	inline function continue_(curve:Curve3) : Curve3 return (cast this)[cast 'continue'](curve);
 	private function _computeLength(path:Dynamic) : Dynamic;
 }
