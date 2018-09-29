@@ -17,7 +17,7 @@ extern class WorkerPool
 	/**
 	 * Terminates all workers and clears any pending actions.
 	 */
-	function dispose(?deep:Bool) : Void;
+	function dispose() : Void;
 	/**
 	 * Pushes an action to the worker pool. If all the workers are active, the action will be
 	 * pended until a worker has completed its action.

@@ -1,7 +1,5 @@
 package babylonjs;
 
-import haxe.Constraints;
-
 typedef Uint8ArrayConstructor =
 {
     public function new(elements:Iterable<Int>): js.html.Uint8Array;
