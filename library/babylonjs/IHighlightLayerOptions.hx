@@ -1,6 +1,6 @@
 package babylonjs;
 
-extern interface IHighlightLayerOptions
+typedef IHighlightLayerOptions =
 {
 	/**
 	 * Multiplication factor apply to the canvas size to compute the render target size
