@@ -25,7 +25,7 @@ extern class DynamicTexture extends Texture
 	/**
 	 * Scales the texture
 	 */
-	function scale(ratio:Float) : Void;
+	override function scale(ratio:Float) : Void;
 	/**
 	 * Resizes the texture
 	 */
@@ -51,9 +51,9 @@ extern class DynamicTexture extends Texture
 	 * Clones the texture
 	 * @returns the clone of the texture.
 	 */
-	function clone() : DynamicTexture;
+	override function clone() : DynamicTexture;
 	/**
 	 * @hidden 
 	 */
-	function _rebuild() : Void;
+	override function _rebuild() : Void;
 }
